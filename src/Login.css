@@ -1,0 +1,184 @@
+/* login.css */
+body, html {
+    margin: 0;
+    padding: 0;
+    background-color: #fff; /* Ensuring the background is white */
+    height: 100%; /* Full viewport height */
+  }
+  
+  #root {
+    height: 100%; /* For flexbox vertical centering to work */
+  }
+  
+  .login-container {
+    width: 400px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center vertically */
+    align-items: center; /* Center horizontally */
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    background-color: #fff; /* White background */
+    padding: 20px; /* Padding around the form */
+    box-sizing: border-box; /* Ensures padding is included in width */
+  }
+  
+  /* For web layout */
+  @media (min-width: 769px) {
+    body, html {
+      background-color: #fff; /* White background */
+    }
+  
+    #root {
+      display: flex;
+      flex-direction: column;
+    }
+  
+    .login-container {
+      flex-grow: 1;
+      max-width: 400px; /* Maximum width of the container */
+    }
+  }
+  
+  /* For mobile layout */
+  @media (max-width: 768px) {
+    .login-container {
+      width: 100vw;
+      max-width: none; /* Removes the max-width */
+      height: 100vh;
+      margin: 0;
+      border-radius: 0;
+      box-shadow: none;
+      overflow: hidden; /* No scrolling */
+      position: fixed; /* Fix position to avoid scrolling */
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      justify-content: flex-start; /* Align to top to leave space for footer */
+      padding-bottom: 100px; /* Space for the footer */
+    }
+  
+    .login-footer {
+      display: block; /* Show footer */
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100px; /* Height of the footer */
+      text-align: center;
+    }
+  
+    .login-footer img {
+      width: 100%;
+      height: auto;
+    }
+  }
+  
+  .login-header img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .login-form {
+    width: 100%;
+    padding: 20px;
+  }
+  
+  .login-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .login-tab {
+    background-color: transparent;
+    border: 1px solid #dcdcdc;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-weight: bold;
+    outline: none;
+    color: red;
+  }
+  
+  .login-tab:focus,
+  .login-tab:hover {
+    border-color: red;
+    color: darkred;
+  }
+  
+  .terms-text {
+    color: #333;
+    font-size: 0.9em;
+    margin-bottom: 20px;
+  }
+  
+  .terms-text .highlighted-text {
+    color: red;
+  }
+  
+  .login-form input {
+    width: calc(100% - 40px); /* Adjust for padding */
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #dcdcdc;
+    border-radius: 5px;
+  }
+  
+  .login-options {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .remember-me {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .recover-password {
+    color: #c00;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .login-options input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    margin: 0;
+  }
+  
+  .login-button {
+    width: 100%;
+    background-color: #c00;
+    color: #fff;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    font-size: 1em;
+  }
+  
+  .login-button:hover {
+    background-color: #a00;
+  }
+  
+  .social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .login-footer {
+    display: none; /* Initially hide the footer */
+  }
+  
