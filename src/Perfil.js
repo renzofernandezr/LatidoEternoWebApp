@@ -12,7 +12,7 @@ const ProfilePage = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetch(`https://latido-eterno-api.vercel.app/medallon/${uid}`)
+    fetch(`https://api.latidoeterno.com/medallon/${uid}`)
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
@@ -21,7 +21,7 @@ const ProfilePage = () => {
       })
       .then(data => {
         setMemberData(data.Miembro);
-        return fetch(`https://latido-eterno-api.vercel.app/ubigeo/${data.Miembro.idUbigeo}`);
+        return fetch(`https://api.latidoeterno.com/ubigeo/${data.Miembro.idUbigeo}`);
       })
       .then(response => {
         if (!response.ok) {
@@ -64,7 +64,7 @@ const ProfilePage = () => {
         <p className="member-frase">{memberData.Frase}</p>
         <div className="country-info">
         {ubigeoData && ubigeoData.urlImagePais && (
-          <img src={ubigeoData.urlImagePais} alt="Country" className="country-flag" style={{ width: '50px', height: '50px' }} />
+          <img src={ubigeoData.urlImagePais} alt="Country" className="country-flag"/>
         )}
         <span className="country-description">{ubigeoData ? ubigeoData.FullDescripcion : ''}</span>
       </div>

@@ -36,27 +36,31 @@
 .member-frase {
   text-align: center;
   margin-bottom: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
   font-style: italic;
   color: #666;
+  font-size: 1.0em; /* Adjusted for uniformity */
 }
 .country-info {
   display: flex;
   align-items: center; /* Align items vertically in the center */
   justify-content: center; /* Center items horizontally */
+  margin-top: 10px; /* Space from the frase */
   margin-bottom: 10px; /* Space from the frase */
   width: 100%; /* Take the full width to allow centering */
 }
 
 .country-flag {
-  width: auto; /* Let the browser calculate the width based on the height */
-  height: 30px; /* Set the height as desired */
-  border-radius: 15px; /* Slightly rounded corners */
+  /* width: auto; */
+  height: 25px; /* Set the height as desired */
+  border-radius: 7px; /* Slightly rounded corners */
   object-fit: contain; /* Ensures that the entire image is visible, may add letterboxing */
   margin-right: 10px; /* Space between the flag and the description */
 }
 
 .country-description {
-  /* Any additional styling for the label text */
+  font-size: 0.9em; /* Adjusted for uniformity */
 }
 
 .date-bio-card {
