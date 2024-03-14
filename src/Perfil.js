@@ -7,6 +7,7 @@ import './Profile.css'; // Custom CSS for profile page
 const ProfilePage = () => {
   const { uid } = useParams();
   const [memberData, setMemberData] = useState(null);
+  const [ubigeoData, setUbigeoData] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -20,10 +21,21 @@ const ProfilePage = () => {
       })
       .then(data => {
         setMemberData(data.Miembro);
-        setLoading(false);
+        return fetch(`https://latido-eterno-api.vercel.app/ubigeo/${data.Miembro.idUbigeo}`);
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(ubigeoData => {
+        setUbigeoData(ubigeoData);
       })
       .catch(error => {
         console.error('Fetch error:', error.message);
+      })
+      .finally(() => {
         setLoading(false);
       });
   }, [uid]);
@@ -50,6 +62,12 @@ const ProfilePage = () => {
         )}
         <h1 className="member-name">{`${memberData.Nombre} ${memberData.Apellido}`}</h1>
         <p className="member-frase">{memberData.Frase}</p>
+        <div className="country-info">
+        {ubigeoData && ubigeoData.urlImagePais && (
+          <img src={ubigeoData.urlImagePais} alt="Country" className="country-flag" style={{ width: '50px', height: '50px' }} />
+        )}
+        <span className="country-description">{ubigeoData ? ubigeoData.FullDescripcion : ''}</span>
+      </div>
         <Tabs>
           <TabList>
             <Tab>Mi Historia</Tab>
