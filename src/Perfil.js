@@ -96,6 +96,10 @@ const ProfilePage = () => {
           <TabPanel>
             {/* And here, you would render the member's videos */}
             <p>El contenido de Videos estará disponible aquí.</p>
+            <video controls width="100%">
+            <source src="https://blobcontlatidoeterno.blob.core.windows.net/gestorcontenido1/Video%2015-03-24,%201%2058%2030%20a.%C2%A0m..mov" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
           </TabPanel>
         </Tabs>
       </div>
