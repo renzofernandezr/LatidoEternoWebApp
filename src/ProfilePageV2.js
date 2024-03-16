@@ -22,18 +22,18 @@ const ProfilePageV2 = () => {
       {/* Navigation Bar */}
       <div className="md:hidden fixed inset-x-0 bottom-0 bg-white shadow-lg">
         <div className="flex justify-around text-gray-400">
-          <a href="#" className="block text-center text-gray-400 hover:text-red-400 py-2">
+          <p className="block text-center text-gray-400 hover:text-red-400 py-2">
             <i className="far fa-share text-2xl"></i>
             <span className="block text-xs">Compartir</span>
-          </a>
-          <a href="#" className="block text-center text-gray-400 hover:text-red-400 py-2">
+          </p>
+          <p className="block text-center text-gray-400 hover:text-red-400 py-2">
             <i className="far fa-shopping-cart text-2xl"></i>
             <span className="block text-xs">Comprar</span>
-          </a>
-          <a href="#" className="block text-center text-gray-400 hover:text-red-400 py-2">
+          </p>
+          <p className="block text-center text-gray-400 hover:text-red-400 py-2">
             <i className="far fa-sign-in-alt text-2xl"></i>
             <span className="block text-xs">Ingresar</span>
-          </a>
+          </p>
         </div>
       </div>
     </div>
