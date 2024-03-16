@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css'; // Default react-tabs styling
-import './Profile.css'; // Custom CSS for profile page
+// import './Profil1e.css'; // Custom CSS for profile page
 
 const ProfilePage = () => {
   const { uid } = useParams();

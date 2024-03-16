@@ -1,0 +1,42 @@
+/* Resets any specific focus or active styles that might interfere */
+.react-tabs__tab:focus, 
+.react-tabs__tab:active {
+  outline: none;
+  box-shadow: none;
+  border-bottom: none;
+}
+
+/* Styles for the tab list */
+.react-tabs__tab-list {
+  border-bottom: 1px solid #ddd; /* Default border color for the tab list */
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+}
+
+/* Styles for each tab */
+.react-tabs__tab {
+  display: inline-block;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  margin-bottom: -1px; /* Aligns the border to the bottom edge of the tab list */
+}
+
+/* Styles for the selected tab */
+.react-tabs__tab--selected {
+  background: none;
+  color: red;
+  border-bottom: 2px solid red; /* Red underline for the selected tab */
+}
+
+/* Styles for the tab panels */
+.react-tabs__tab-panel {
+  display: none;
+}
+
+/* Styles for the selected tab panel */
+.react-tabs__tab-panel--selected {
+  display: block;
+}
