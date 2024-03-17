@@ -11,29 +11,31 @@ const ProfilePageV2 = () => {
   const { uid } = useParams();
   const [memberData, setMemberData] = useState(null);
   const [loading, setLoading] = useState(true);
-
+  
   useEffect(() => {
     const fetchMedallonDetails = async () => {
+      setLoading(true);
       try {
-        setLoading(true);
         const response = await fetch(`https://api.latidoeterno.com/medallon/${uid}`);
         if (!response.ok) throw new Error('Network response was not ok');
         const data = await response.json();
         setMemberData(data.Miembro);
+        // Optionally, if you want to update the banner and profile picture dynamically:
+        // setBannerSrc(data.Miembro.BannerUrl);
+        // setProfilePicSrc(data.Miembro.AvatarUrl);
       } catch (error) {
         console.error('Fetch error:', error);
       } finally {
         setLoading(false);
       }
     };
-  
+
     if (uid) fetchMedallonDetails();
   }, [uid]);
 
   function updateToggle(id) {
     setToggle(id);
   }
-
 
   const formatDate = (isoString) => {
     const date = new Date(isoString);
@@ -74,10 +76,14 @@ const ProfilePageV2 = () => {
       </header>
       <div className="w-full flex flex-col items-center px-0 mt-14 md:mt-28">
         <div className="w-full max-w-6xl bg-white md:shadow-lg relative text-center md:text-left md:rounded-lg">
-          <img src={bannerSrc} alt="Banner" className="w-full md:rounded-t-lg" />
-          <img src={profilePicSrc} alt="Profile" className="rounded-full border-6 border-white absolute left-1/2 md:left-32 transform -translate-x-1/2 -translate-y-1/2 w-36 h-36" />
+          <img src={memberData.BannerUrl} alt="Banner" className="w-full md:rounded-t-lg" />
+          <img src={memberData.AvatarUrl} alt="Profile" className="rounded-full border-6 border-white absolute left-1/2 md:left-32 transform -translate-x-1/2 -translate-y-1/2 w-36 h-36" />
           <h2 className="text-3xl font-bold text-red-400 mt-20 md:mt-6 md:mx-60">{`${memberData.Nombre} ${memberData.Apellido}`}</h2>
           <p className="text-base text-gray-400 mx-16 my-3 italic transform md:mx-60 md:mb-10">{memberData.Frase}</p>
+          <div className="flex items-center justify-center mt-4">
+            <img src={memberData.Pais.FlagImageUrl} alt="Country Flag" className="w-auto h-6 mr-2 rounded-md" />
+            <p className="text-base">{`${memberData.Estado.Nombre}, ${memberData.Pais.NombreSpanish}`}</p>
+          </div>
         </div>
       </div>
 
@@ -94,7 +100,7 @@ const ProfilePageV2 = () => {
             <div className={toggle === 1  ? "show-conte nt": "content"}>
               <p>
               {`${formatDate(memberData.FechaDeNacimiento)} - ${formatDate(memberData.FechaDePartida)}`}</p>
-              <p class='mt-3 px-12 pt-0 text-justify whitespace-pre-wrap'>{memberData.Biografia}</p>
+              <p class='mt-3 px-12 pt-0 text-justify whitespace-pre-wrap pb-20'>{memberData.Biografia}</p>
             </div>
             <div className={toggle === 2  ? "show-content": "content"}>
               <h1> Text 2</h1>
@@ -117,8 +123,8 @@ const ProfilePageV2 = () => {
             <span className="block text-xs">Compartir</span>
           </p>
           <p className="block text-center text-gray-400 hover:text-red-400 py-2">
-            <i className="far fa-shopping-cart text-2xl"></i>
-            <span className="block text-xs">Comprar</span>
+            <i className="far fa-home text-2xl"></i>
+            <a href="https://latidoeterno.com/" className="block text-xs">Tienda</a>
           </p>
           <p className="block text-center text-gray-400 hover:text-red-400 py-2">
             <i className="far fa-sign-in-alt text-2xl"></i>
