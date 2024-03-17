@@ -7,7 +7,10 @@ module.exports = {
     extend: {
       borderWidth: {
         '6': '6px', // or '0.375rem', or '3px' if you want a 3px border
-      }
+      },
+      colors: {
+        'rojo': '#FF3131',
+      },
     },  
   },
   plugins: [],

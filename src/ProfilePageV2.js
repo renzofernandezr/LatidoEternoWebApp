@@ -58,16 +58,16 @@ const ProfilePageV2 = () => {
         <div className="flex-grow md:flex-grow-0 flex justify-center">
           <img src={logoSrc} alt="Logo" className="h-11 md:h-16"/>
         </div>
-        <div className="hidden md:flex items-center space-x-6 mr-20">
-          <p className="block text-center text-gray-400 hover:text-red-400 py-2 hover:cursor-pointer">
+        <div className="hidden md:flex items-center space-x-10 mr-20">
+        <p className="block text-center text-rojo py-2 hover:cursor-pointer">
             <i className="far fa-share text-xl"></i>
             <span className="ml-2">Compartir</span>
           </p>
-          <p className="block text-center text-gray-400 hover:text-red-400 py-2 hover:cursor-pointer">
+          <p className="block text-center text-rojo py-2 hover:cursor-pointer">
             <i className="far fa-shopping-cart text-xl"></i>
             <span className="ml-2">Comprar</span>
           </p>
-          <p className="block text-center text-gray-400 hover:text-red-400 py-2 hover:cursor-pointer">
+          <p className="block text-center text-rojo py-2 hover:cursor-pointer">
             <i className="far fa-sign-in-alt text-xl"></i>
             <span className="ml-2">Ingresar</span>
           </p>
@@ -78,9 +78,9 @@ const ProfilePageV2 = () => {
         <div className="w-full max-w-6xl bg-white md:shadow-lg relative text-center md:text-left md:rounded-lg">
           <img src={memberData.BannerUrl} alt="Banner" className="w-full md:rounded-t-lg" />
           <img src={memberData.AvatarUrl} alt="Profile" className="rounded-full border-6 border-white absolute left-1/2 md:left-32 transform -translate-x-1/2 -translate-y-1/2 w-36 h-36" />
-          <h2 className="text-3xl font-bold text-red-400 mt-20 md:mt-6 md:mx-60">{`${memberData.Nombre} ${memberData.Apellido}`}</h2>
-          <p className="text-base text-gray-400 mx-16 my-3 italic transform md:mx-60 md:mb-10">{memberData.Frase}</p>
-          <div className="flex items-center justify-center mt-4">
+          <h2 className="text-3xl font-bold text-rojo mt-20 md:mt-6 md:mx-60">{`${memberData.Nombre} ${memberData.Apellido}`}</h2>
+          <p className="text-base text-gray-400 mx-16 my-3 italic transform md:mx-60 ">{memberData.Frase}</p>
+          <div className="flex justify-center md:justify-start mt-4 md:mx-60 md:mb-10">
             <img src={memberData.Pais.FlagImageUrl} alt="Country Flag" className="w-auto h-6 mr-2 rounded-md" />
             <p className="text-base">{`${memberData.Estado.Nombre}, ${memberData.Pais.NombreSpanish}`}</p>
           </div>
@@ -97,18 +97,21 @@ const ProfilePageV2 = () => {
         <li className={toggle === 3 ? 'selected' : ''} onClick={() => updateToggle(3)}>Comenta</li>
       </ul>
       <div className="slate-line"></div>
-            <div className={toggle === 1  ? "show-conte nt": "content"}>
-              <p>
-              {`${formatDate(memberData.FechaDeNacimiento)} - ${formatDate(memberData.FechaDePartida)}`}</p>
-              <p class='mt-3 px-12 pt-0 text-justify whitespace-pre-wrap pb-20'>{memberData.Biografia}</p>
-            </div>
-            <div className={toggle === 2  ? "show-content": "content"}>
-              <h1> Text 2</h1>
-            </div>
-            <div className={toggle === 3  ? "show-content": "content"}>
-              <h1> Text 3</h1>
-            </div>
-          </div>
+
+      <div className={toggle === 1  ? "show-content": "content"}>
+        <p class="text-center">
+        {`${formatDate(memberData.FechaDeNacimiento)} - ${formatDate(memberData.FechaDePartida)}`}</p>
+        <p class='mt-3 px-12 pt-0 text-justify whitespace-pre-wrap pb-20 md:pb-10'>{memberData.Biografia}</p>
+      </div>
+
+      <div className={toggle === 2  ? "show-content": "content"}>
+        <h1> Text 2</h1>
+      </div>
+
+      <div className={toggle === 3  ? "show-content": "content"}>
+        <h1> Text 3</h1>
+      </div>
+    </div>
 
 
 
@@ -116,17 +119,17 @@ const ProfilePageV2 = () => {
       </div>
 
       {/* Navigation Bar */}
-      <div className="md:hidden fixed inset-x-0 bottom-0 bg-gray-100 shadow-lg">
-        <div className="flex justify-around text-gray-500">
-          <p className="block text-center text-gray-400 hover:text-red-400 py-2">
+      <div className="md:hidden fixed inset-x-0 bottom-0 bg-gray-50 shadow-lg">
+        <div className="flex justify-around">
+          <p className="block text-center text-rojo py-2">
             <i className="far fa-share text-2xl"></i>
             <span className="block text-xs">Compartir</span>
           </p>
-          <p className="block text-center text-gray-400 hover:text-red-400 py-2">
+          <p className="block text-center text-rojo py-2">
             <i className="far fa-home text-2xl"></i>
             <a href="https://latidoeterno.com/" className="block text-xs">Tienda</a>
           </p>
-          <p className="block text-center text-gray-400 hover:text-red-400 py-2">
+          <p className="block text-center text-rojo py-2">
             <i className="far fa-sign-in-alt text-2xl"></i>
             <span className="block text-xs">Ingresar</span>
           </p>
