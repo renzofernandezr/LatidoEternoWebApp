@@ -7,7 +7,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<ProfilePageV2 />} />
-        <Route path="/Perfil/:uid" element={<Perfil />} /> {/* Updated route */}
+        <Route path="/Perfil/:uid" element={<ProfilePageV2 />} /> {/* Updated route */}
       </Routes>
     </Router>
   );

@@ -1,32 +1,71 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import './ProfilePageV2.css';
-import {useState} from 'react';
 
 const ProfilePageV2 = () => {
   const logoSrc = `${process.env.PUBLIC_URL}/logoh.png`;
   const bannerSrc = `${process.env.PUBLIC_URL}/banner.jpg`;
   const profilePicSrc = `${process.env.PUBLIC_URL}/profile.jpg`;
+  const [toggle, setToggle] = useState(1);
+
+  const { uid } = useParams();
+  const [memberData, setMemberData] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchMedallonDetails = async () => {
+      try {
+        setLoading(true);
+        const response = await fetch(`https://api.latidoeterno.com/medallon/${uid}`);
+        if (!response.ok) throw new Error('Network response was not ok');
+        const data = await response.json();
+        setMemberData(data.Miembro);
+      } catch (error) {
+        console.error('Fetch error:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
   
-  const [toggle,setToggle] = useState(1)
-  function updateToggle(id) {setToggle(id);}
+    if (uid) fetchMedallonDetails();
+  }, [uid]);
+
+  function updateToggle(id) {
+    setToggle(id);
+  }
+
+
+  const formatDate = (isoString) => {
+    const date = new Date(isoString);
+    const day = date.getDate();
+    const year = date.getFullYear();
+    const months = ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"];
+    const month = months[date.getMonth()]; // Get the first 3 letters of the month
+  
+    return `${day} ${month}. ${year}`;
+  };
+
+
+  if (loading) return <div>Loading...</div>;
+  if (!memberData) return <div>No data available. Redirect to 404</div>;
+  
 
   return (
     <div className="min-h-screen flex flex-col bg-white md:bg-gray-100">
-      <header className="w-full h-14 md:h-20 flex justify-center md:justify-between items-center bg-white fixed top-0 z-50 shadow-md px-4 md:px-14">
+      <header className="w-full h-14 md:h-20 flex justify-center md:justify-between items-center bg-white fixed top-0 z-50 shadow-md px-4 md:px-20">
         <div className="flex-grow md:flex-grow-0 flex justify-center">
           <img src={logoSrc} alt="Logo" className="h-11 md:h-16"/>
         </div>
-
-        <div className="hidden md:flex items-center space-x-6 mr-14">
-          <p className="block text-center text-gray-400 hover:text-red-400 py-2">
+        <div className="hidden md:flex items-center space-x-6 mr-20">
+          <p className="block text-center text-gray-400 hover:text-red-400 py-2 hover:cursor-pointer">
             <i className="far fa-share text-xl"></i>
             <span className="ml-2">Compartir</span>
           </p>
-          <p className="block text-center text-gray-400 hover:text-red-400 py-2">
+          <p className="block text-center text-gray-400 hover:text-red-400 py-2 hover:cursor-pointer">
             <i className="far fa-shopping-cart text-xl"></i>
             <span className="ml-2">Comprar</span>
           </p>
-          <p className="block text-center text-gray-400 hover:text-red-400 py-2">
+          <p className="block text-center text-gray-400 hover:text-red-400 py-2 hover:cursor-pointer">
             <i className="far fa-sign-in-alt text-xl"></i>
             <span className="ml-2">Ingresar</span>
           </p>
@@ -37,8 +76,8 @@ const ProfilePageV2 = () => {
         <div className="w-full max-w-6xl bg-white md:shadow-lg relative text-center md:text-left md:rounded-lg">
           <img src={bannerSrc} alt="Banner" className="w-full md:rounded-t-lg" />
           <img src={profilePicSrc} alt="Profile" className="rounded-full border-6 border-white absolute left-1/2 md:left-32 transform -translate-x-1/2 -translate-y-1/2 w-36 h-36" />
-          <h2 className="text-3xl font-bold text-red-400 mt-20 md:mt-6 md:mx-60">Alberto Garcia Perez</h2>
-          <p className="text-base text-gray-400 mx-20 my-3 italic transform md:mx-60 md:mb-10">Su sabiduria y generosidad serán recordados por siempre</p>
+          <h2 className="text-3xl font-bold text-red-400 mt-20 md:mt-6 md:mx-60">{`${memberData.Nombre} ${memberData.Apellido}`}</h2>
+          <p className="text-base text-gray-400 mx-16 my-3 italic transform md:mx-60 md:mb-10">{memberData.Frase}</p>
         </div>
       </div>
 
@@ -52,8 +91,10 @@ const ProfilePageV2 = () => {
         <li className={toggle === 3 ? 'selected' : ''} onClick={() => updateToggle(3)}>Comenta</li>
       </ul>
       <div className="slate-line"></div>
-            <div className={toggle === 1  ? "show-content": "content"}>
-              <h1> Text 1</h1>
+            <div className={toggle === 1  ? "show-conte nt": "content"}>
+              <p>
+              {`${formatDate(memberData.FechaDeNacimiento)} - ${formatDate(memberData.FechaDePartida)}`}</p>
+              <p class='mt-3 px-12 pt-0 text-justify whitespace-pre-wrap'>{memberData.Biografia}</p>
             </div>
             <div className={toggle === 2  ? "show-content": "content"}>
               <h1> Text 2</h1>

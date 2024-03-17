@@ -21,6 +21,7 @@ const ProfilePage = () => {
       })
       .then(data => {
         setMemberData(data.Miembro);
+        console.log(memberData);
         return fetch(`https://api.latidoeterno.com/ubigeo/${data.Miembro.idUbigeo}`);
       })
       .then(response => {
