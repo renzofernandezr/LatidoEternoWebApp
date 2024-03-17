@@ -4,8 +4,8 @@ import './ProfilePageV2.css';
 
 const ProfilePageV2 = () => {
   const logoSrc = `${process.env.PUBLIC_URL}/logoh.png`;
-  const bannerSrc = `${process.env.PUBLIC_URL}/banner.jpg`;
-  const profilePicSrc = `${process.env.PUBLIC_URL}/profile.jpg`;
+  // const bannerSrc = `${process.env.PUBLIC_URL}/banner.jpg`;
+  // const profilePicSrc = `${process.env.PUBLIC_URL}/profile.jpg`;
   const [toggle, setToggle] = useState(1);
 
   const { uid } = useParams();
