@@ -111,7 +111,7 @@ const ProfilePageV2 = () => {
 
       <div className={toggle === 2  ? "show-content": "content"}>
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 px-12 mt-3">
+      <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 px-12 mt-3 pb-20 md:pb-10">
       {mediaData.map((item) => (
         <div key={item.idContenido} className="bg-gray-200 cursor-pointer rounded-lg w-full overflow-hidden relative" style={{'padding-top':'100%'}} 
         >
