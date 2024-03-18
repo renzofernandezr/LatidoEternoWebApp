@@ -6,10 +6,11 @@ const ProfilePageV2 = () => {
   const logoSrc = `${process.env.PUBLIC_URL}/logoh.png`;
   // const bannerSrc = `${process.env.PUBLIC_URL}/banner.jpg`;
   // const profilePicSrc = `${process.env.PUBLIC_URL}/profile.jpg`;
-  const [toggle, setToggle] = useState(1);
+  const [toggle, setToggle] = useState(2);
 
   const { uid } = useParams();
   const [memberData, setMemberData] = useState(null);
+  const [mediaData, setMediaData] = useState([]);
   const [loading, setLoading] = useState(true);
   
   useEffect(() => {
@@ -20,19 +21,21 @@ const ProfilePageV2 = () => {
         if (!response.ok) throw new Error('Network response was not ok');
         const data = await response.json();
         setMemberData(data.Miembro);
-        // Optionally, if you want to update the banner and profile picture dynamically:
-        // setBannerSrc(data.Miembro.BannerUrl);
-        // setProfilePicSrc(data.Miembro.AvatarUrl);
+  
+        // After successfully fetching member data, fetch media data
+        const mediaResponse = await fetch(`https://api.latidoeterno.com/media/${data.Miembro.CodigoMiembro}`);
+        if (!mediaResponse.ok) throw new Error('Media fetch failed');
+        const mediaData = await mediaResponse.json();
+        setMediaData(mediaData);
       } catch (error) {
         console.error('Fetch error:', error);
       } finally {
         setLoading(false);
       }
     };
-
+  
     if (uid) fetchMedallonDetails();
   }, [uid]);
-
   function updateToggle(id) {
     setToggle(id);
   }
@@ -63,10 +66,12 @@ const ProfilePageV2 = () => {
             <i className="far fa-share text-xl"></i>
             <span className="ml-2">Compartir</span>
           </p>
-          <p className="block text-center text-rojo py-2 hover:cursor-pointer">
-            <i className="far fa-shopping-cart text-xl"></i>
-            <span className="ml-2">Comprar</span>
-          </p>
+          <a href='https://www.latidoeterno.com/'>
+            <p className="block text-center text-rojo py-2 hover:cursor-pointer">
+            <i className="far fa-home text-xl"></i>
+            <span className="ml-2">Home</span>
+            </p>
+          </a>
           <p className="block text-center text-rojo py-2 hover:cursor-pointer">
             <i className="far fa-sign-in-alt text-xl"></i>
             <span className="ml-2">Ingresar</span>
@@ -105,7 +110,22 @@ const ProfilePageV2 = () => {
       </div>
 
       <div className={toggle === 2  ? "show-content": "content"}>
-        <h1> Text 2</h1>
+
+      <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 px-12 mt-3">
+      {mediaData.map((item) => (
+        <div key={item.idContenido} className="bg-gray-200 cursor-pointer rounded-lg w-full overflow-hidden relative" style={{'padding-top':'100%'}} 
+        >
+          {item.Tipo === 'imagen' ? (
+            <img src={item.url} alt={item.nombre} className="absolute top-0 left-0 w-full h-full object-cover rounded-md" />
+          ) : (
+            <video controls autoPlay className="absolute top-0 left-0 w-full h-full object-cover rounded-md">
+              <source src={item.url} type="video/mp4"/>
+              Your browser does not support the video tag.
+            </video>
+          )}
+        </div>
+    ))}
+  </div>
       </div>
 
       <div className={toggle === 3  ? "show-content": "content"}>
@@ -125,10 +145,10 @@ const ProfilePageV2 = () => {
             <i className="far fa-share text-2xl"></i>
             <span className="block text-xs">Compartir</span>
           </p>
-          <p className="block text-center text-rojo py-2">
+          <a className='block text-center text-rojo py-2' href="https://www.latidoeterno.com/">
             <i className="far fa-home text-2xl"></i>
-            <a href="https://latidoeterno.com/" className="block text-xs">Tienda</a>
-          </p>
+            <span className="block text-xs">Tienda</span>
+          </a>
           <p className="block text-center text-rojo py-2">
             <i className="far fa-sign-in-alt text-2xl"></i>
             <span className="block text-xs">Ingresar</span>
