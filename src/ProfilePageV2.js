@@ -7,6 +7,10 @@ const ProfilePageV2 = () => {
   // const bannerSrc = `${process.env.PUBLIC_URL}/banner.jpg`;
   // const profilePicSrc = `${process.env.PUBLIC_URL}/profile.jpg`;
   const [toggle, setToggle] = useState(2);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalContent, setModalContent] = useState({ url: '', description: '', fecha_creacion: '' });
+
+
 
   const { uid } = useParams();
   const [memberData, setMemberData] = useState(null);
@@ -39,7 +43,16 @@ const ProfilePageV2 = () => {
   function updateToggle(id) {
     setToggle(id);
   }
+  function openModal(item) {
+    setModalContent({ url: item.url, description: item.descripcion, fecha_creacion: item.fecha_creacion });
+    setIsModalOpen(true);
+  }
+  function closeModal() {
+    setIsModalOpen(false);
+  }
+  
 
+  
   const formatDate = (isoString) => {
     const date = new Date(isoString);
     const day = date.getDate();
@@ -113,12 +126,12 @@ const ProfilePageV2 = () => {
 
       <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 px-12 mt-3 pb-20 md:pb-10">
       {mediaData.map((item) => (
-        <div key={item.idContenido} className="bg-gray-200 cursor-pointer rounded-lg w-full overflow-hidden relative" style={{'padding-top':'100%'}} 
-        >
+          <div key={item.idContenido} className="bg-gray-200 cursor-pointer rounded-lg overflow-hidden relative" 
+          style={{ paddingTop: '100%' }} onClick={() => openModal(item)}>
           {item.Tipo === 'imagen' ? (
             <img src={item.url} alt={item.nombre} className="absolute top-0 left-0 w-full h-full object-cover rounded-md" />
           ) : (
-            <video controls autoPlay className="absolute top-0 left-0 w-full h-full object-cover rounded-md">
+            <video controls className="absolute top-0 left-0 w-full h-full object-cover rounded-md">
               <source src={item.url} type="video/mp4"/>
               Your browser does not support the video tag.
             </video>
@@ -155,7 +168,24 @@ const ProfilePageV2 = () => {
           </p>
         </div>
       </div>
-    </div>
+      {isModalOpen && (
+        <div className="modal" onClick={closeModal}>
+          <div className="modal-content" onClick={e => e.stopPropagation()}>
+            <span className="close cursor-pointer" onClick={closeModal}>&times;</span>
+            {modalContent.url.endsWith('.mp4') ? (
+              <video controls className="mb-4" style={{ width: '100%' }}>
+                <source src={modalContent.url} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            ) : (
+              <img src={modalContent.url} alt="Media" className="mb-4" style={{ width: '100%' }} />
+            )}
+            <p>{modalContent.description}</p>
+            <p>{new Date(modalContent.fecha_creacion).toLocaleDateString('es-ES')}</p>
+          </div>
+        </div>
+      )}
+    </div>    
   );
 };
 
