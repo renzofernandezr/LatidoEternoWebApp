@@ -112,7 +112,7 @@ const ProfilePageV2 = () => {
       <ul className="flex flex-wrap items-center justify-center text-black space-x-10">
         <li className={toggle === 1 ? 'selected' : ''} onClick={() => updateToggle(1)}>Mi Historia</li>
         <li className={toggle === 2 ? 'selected' : ''} onClick={() => updateToggle(2)}>Contenido</li>
-        <li className={toggle === 3 ? 'selected' : ''} onClick={() => updateToggle(3)}>Comenta</li>
+        <li className={toggle === 3 ? 'selected' : ''} onClick={() => updateToggle(3)}>Comentas</li>
       </ul>
       <div className="slate-line"></div>
 
