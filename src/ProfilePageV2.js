@@ -75,7 +75,7 @@ const ProfilePageV2 = () => {
           <img src={logoSrc} alt="Logo" className="h-11 md:h-16"/>
         </div>
         <div className="hidden md:flex items-center space-x-10 mr-20">
-  <p className="block text-center text-black py-2 hover:cursor-pointer rounded-full bg-gray-200 p-3">
+  <p className="block text-center text-white py-2 hover:cursor-pointer rounded-full bg-black p-3">
     <i className="far fa-share text-xl"></i>
     <span className="ml-2">Compartir</span>
   </p>
@@ -152,39 +152,40 @@ const ProfilePageV2 = () => {
       </div>
 
       {/* Navigation Bar */}
-      <div className="md:hidden fixed inset-x-0 bottom-0 bg-gray-50 shadow-lg">
-        <div className="flex justify-around">
-          <p className="block text-center text-rojo py-2">
-            <i className="far fa-share text-2xl"></i>
-            <span className="block text-xs">Compartir</span>
-          </p>
-          <a className='block text-center text-rojo py-2' href="https://www.latidoeterno.com/">
-            <i className="far fa-home text-2xl"></i>
-            <span className="block text-xs">Tienda</span>
-          </a>
-          <p className="block text-center text-rojo py-2">
-            <i className="far fa-sign-in-alt text-2xl"></i>
-            <span className="block text-xs">Ingresar</span>
-          </p>
-        </div>
-      </div>
-      {isModalOpen && (
-        <div className="modal" onClick={closeModal}>
-          <div className="modal-content" onClick={e => e.stopPropagation()}>
-            <span className="close cursor-pointer" onClick={closeModal}>&times;</span>
-            {modalContent.url.endsWith('.mp4') ? (
-              <video controls className="mb-4" style={{ width: '100%' }}>
-                <source src={modalContent.url} type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-            ) : (
-              <img src={modalContent.url} alt="Media" className="mb-4" style={{ width: '100%' }} />
-            )}
-            <p>{modalContent.description}</p>
-            <p>{new Date(modalContent.fecha_creacion).toLocaleDateString('es-ES')}</p>
-          </div>
-        </div>
+      <div className="md:hidden fixed inset-x-0 bottom-0 bg-white" style={{ boxShadow: '1px -1px 4px 0px rgba(88,88,88,0.19)' }}>
+  <div className="flex justify-around">
+    <p className="block text-center text-black py-2">
+      <i className="far fa-share text-rojo text-2xl"></i>
+      <span className="block text-xs">Compartir</span>
+    </p>
+    <a className='block text-center text-black py-2' href="https://www.latidoeterno.com/">
+      <i className="far fa-home text-rojo text-2xl"></i>
+      <span className="block text-xs">Tienda</span>
+    </a>
+    <p className="block text-center text-black py-2">
+      <i className="far fa-sign-in-alt text-rojo text-2xl"></i>
+      <span className="block text-xs">Ingresar</span>
+    </p>
+  </div>
+</div>
+{isModalOpen && (
+  <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50 z-50" onClick={closeModal}>
+    <div className="bg-white p-4 rounded-lg shadow-lg max-w-screen-md max-h-screen-md overflow-auto" onClick={e => e.stopPropagation()}>
+      <span className="absolute top-0 right-0 cursor-pointer text-gray-500 hover:text-gray-700" onClick={closeModal}>&times;</span>
+      {modalContent.url.endsWith('.mp4') ? (
+        <video controls className="mb-4 w-full" style={{ maxWidth: '100%' }}>
+          <source src={modalContent.url} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      ) : (
+        <img src={modalContent.url} alt="Media" className="mb-4" style={{ maxWidth: '100%', maxHeight: '70vh' }} />
       )}
+      <p>{modalContent.description}</p>
+      <p>{new Date(modalContent.fecha_creacion).toLocaleDateString('es-ES')}</p>
+    </div>
+  </div>
+)}
+
     </div>    
   );
 };
