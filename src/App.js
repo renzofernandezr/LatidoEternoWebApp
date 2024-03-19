@@ -7,7 +7,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Login />} />
-        <Route path="/Perfil/:uid" element={<ProfilePageV2 />} /> {/* Updated route */}
+        <Route path="/" element={<Login />} /> {/* Updated route */}
       </Routes>
     </Router>
   );
