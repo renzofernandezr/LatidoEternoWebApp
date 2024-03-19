@@ -75,21 +75,21 @@ const ProfilePageV2 = () => {
           <img src={logoSrc} alt="Logo" className="h-11 md:h-16"/>
         </div>
         <div className="hidden md:flex items-center space-x-10 mr-20">
-        <p className="block text-center text-rojo py-2 hover:cursor-pointer">
-            <i className="far fa-share text-xl"></i>
-            <span className="ml-2">Compartir</span>
-          </p>
-          <a href='https://www.latidoeterno.com/'>
-            <p className="block text-center text-rojo py-2 hover:cursor-pointer">
-            <i className="far fa-home text-xl"></i>
-            <span className="ml-2">Home</span>
-            </p>
-          </a>
-          <p className="block text-center text-rojo py-2 hover:cursor-pointer">
-            <i className="far fa-sign-in-alt text-xl"></i>
-            <span className="ml-2">Ingresar</span>
-          </p>
-        </div>
+  <p className="block text-center text-black py-2 hover:cursor-pointer rounded-full bg-gray-200 p-3">
+    <i className="far fa-share text-xl"></i>
+    <span className="ml-2">Compartir</span>
+  </p>
+  <a href='https://www.latidoeterno.com/'>
+    <p className="block text-center text-white py-2 hover:cursor-pointer rounded-full bg-black p-3">
+      <i className="far fa-home text-xl"></i>
+      <span className="ml-2">Tienda</span>
+    </p>
+  </a>
+  <p className="block text-center text-white py-2 hover:cursor-pointer rounded-full bg-rojo p-3">
+    <i className="far fa-sign-in-alt text-xl"></i>
+    <span className="ml-2">Ingresar</span>
+  </p>
+</div>
         
       </header>
       <div className="w-full flex flex-col items-center px-0 mt-14 md:mt-28">
