@@ -45,7 +45,7 @@ const LoginPage = () => {
             </button>
           </div>
           <p className="mt-4 text-sm text-black text-center">
-            <span className="font-bold text-lg">{isLogin ? '¡Bienvenido de vuelta!' : '¡Bienvenido!'}</span> <br />
+            <span className="text-lg">{isLogin ? '¡Bienvenido de vuelta!' : '¡Bienvenido!'}</span> <br />
             <span className="text-black">{isLogin ? 'Por favor ingresa tu correo electrónico y contraseña a continuación.' : 'Por favor completa los campos para registrarte.'}</span>
           </p>
           {isLogin ? (
