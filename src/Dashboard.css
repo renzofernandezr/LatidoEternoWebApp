@@ -1,0 +1,39 @@
+@import url('https://pro.fontawesome.com/releases/v5.10.0/css/all.css');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;800&display=swap');
+
+body, h1, h2, h3, h4, h5, h6, p, a, span {
+  font-family: 'Poppins', sans-serif;
+}
+
+
+.content1{display: none;}
+
+.show-content1{display: block;}
+
+ul {
+  position: relative; /* Establishes a stacking context for the slate line */
+  padding-bottom: 2px; /* Provides space for the slate line */
+  font-weight: bold;
+  color: black;
+}
+li:hover{
+  cursor: pointer;
+}
+
+.slate-line {
+  height: 1px; /* Makes the slate line thinner */
+  background-color: #d1d5db; /* Slate color, equivalent to bg-slate-300 */
+  margin-top: -4px;
+  margin-bottom: 25px;
+  margin-left:  20px;
+  margin-right: 20px;
+}
+
+.selected {
+  border-bottom: 3px solid #FF3131; /* Red underline for the selected tab */
+  position: relative;
+  z-index: 2; /* Ensures the red line overlays the slate line */
+  color: #FF3131;
+  border-radius: 2px solid;
+} 
+

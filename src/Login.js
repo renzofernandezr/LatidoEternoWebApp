@@ -7,9 +7,9 @@ const LoginPage = () => {
   const [password, setPassword] = useState(''); // State to store password
   const [confirmPassword, setConfirmPassword] = useState(''); // State to store confirm password
 
-  const toggleMode = () => {
-    setIsLogin(!isLogin); // Toggle between login and registration mode
-  };
+  // const toggleMode = () => {
+  //   setIsLogin(!isLogin); // Toggle between login and registration mode
+  // };
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword); // Toggle between showing and hiding password
