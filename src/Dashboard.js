@@ -7,19 +7,20 @@ import './Dashboard.css';
 
 
 const DashBoard = () => {
-    const [toggle, setToggle] = useState(2);
+    const [toggle, setToggle] = useState(1);
+    const userId = 1; 
     function updateToggle(id) {
         setToggle(id);
       }
     
       const members = [
-        {
-            id: 1,
+        {   id: 1,
             name: "Antonio Pedro Fernandez",
             photoUrl: "https://lh3.googleusercontent.com/a/ACg8ocJIeFrk9J4aTwaIluwcyeaJXB8LoDEUPJCuxexbPynv946X=s96-c",
             relationship: "Grandfather",
             creationDate: "03/20/2024",
-            verificationStatus: "UNVERIFIED Medallion"}
+            verificationStatus: "UNVERIFIED Medallion"},
+
       ];
 
   return (
@@ -49,12 +50,14 @@ const DashBoard = () => {
             <div className="slate-line"></div>
             
             <div className={toggle === 1  ? "show-content1": "content1"}>
-                <div className="flex justify-center mt-6">
-                    {/* <button className="bg-rojo hover:bg-red-700 text-white py-2 px-4 rounded">
-                    + Crear un nuevo perfil
-                    </button> */}
-                    <MembersList members={members} />
-                </div>
+            <div className="flex md:justify-end justify-center md:mt-0 mt-6">
+                <button className="bg-rojo hover:bg-red-700 text-white py-2 px-4 rounded">
+                + Crear un nuevo perfil
+                </button>
+            </div>
+            <div className="flex justify-center mt-6">
+             <MembersList userId={userId} />
+            </div>
             </div>
 
             <div className={toggle === 2  ? "show-content1": "content1"}>

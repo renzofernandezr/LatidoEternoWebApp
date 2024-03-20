@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 const MemberCard = ({ member }) => {
   return (
@@ -16,26 +16,59 @@ const MemberCard = ({ member }) => {
           {member.verificationStatus}
         </p>
       </div>
-      <div className="px-6 pt-4 pb-2 flex justify-around">
-        <button className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
-          View
+      <div className="px-6 pt-4 pb-2 flex justify-between">
+        <button className="bg-transparent hover:bg-rojo text-rojo font-semibold hover:text-white py-2 px-4 border border-rojo hover:border-transparent rounded w-5/12 mx-1">
+          Ver
         </button>
-        <button className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
-          Edit
+        <button className="bg-transparent hover:bg-rojo text-rojo font-semibold hover:text-white py-2 px-4 border border-rojo hover:border-transparent rounded w-5/12 mx-1">
+          Editar
         </button>
       </div>
     </div>
   );
 };
 
-const MembersList = ({ members }) => {
-  return (
-    <div className="flex flex-wrap justify-center">
-      {members.map(member => (
-        <MemberCard key={member.id} member={member} />
-      ))}
-    </div>
-  );
-};
-
-export default MembersList;
+const MembersList = ({ userId }) => {
+    const [members, setMembers] = useState([]);
+    const [loading, setLoading] = useState(true);
+  
+    useEffect(() => {
+      const fetchMembers = async () => {
+        try {
+          setLoading(true);
+          const response = await fetch(`https://api.latidoeterno.com/members/${userId}`);
+        
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          const data = await response.json();
+          setMembers(data);
+        } catch (error) {
+          console.error('Fetch error:', error);
+        } finally {
+          setLoading(false);
+        }
+      };
+  
+      fetchMembers();
+    }, [userId]);
+  
+    if (loading) return <div>Loading...</div>;
+  
+    return (
+      <div className="grid justify-center md:grid-cols-3 grid-cols-1">
+        {members.map((member) => (
+          <MemberCard key={member.CodigoMiembro} member={{
+            id: member.CodigoMiembro,
+            name: `${member.Nombre} ${member.Apellido}`,
+            photoUrl: "https://lh3.googleusercontent.com/a/ACg8ocJIeFrk9J4aTwaIluwcyeaJXB8LoDEUPJCuxexbPynv946X=s96-c",
+            relationship: member.relacion,
+            creationDate: new Date(member.fechacreacion).toLocaleDateString('en-US'),
+            verificationStatus: member.UID_Medallon ? "VERIFIED" : "UNVERIFIED", // Assuming presence of UID means verified
+          }} />
+        ))}
+      </div>
+    );
+  };
+  
+  export default MembersList;
