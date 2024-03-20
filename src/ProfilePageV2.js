@@ -46,11 +46,12 @@ const ProfilePageV2 = () => {
   function openModal(item) {
     setModalContent({ url: item.url, description: item.descripcion, fecha_creacion: item.fecha_creacion });
     setIsModalOpen(true);
-  }
+    document.body.style.overflow = 'hidden'; // Disable scrolling
+}
   function closeModal() {
     setIsModalOpen(false);
+    document.body.style.overflow = 'auto'; // Re-enable scrolling
   }
-  
 
   
   const formatDate = (isoString) => {
@@ -75,23 +76,23 @@ const ProfilePageV2 = () => {
           <img src={logoSrc} alt="Logo" className="h-11 md:h-16"/>
         </div>
         <div className="hidden md:flex items-center space-x-10 mr-20">
-  <p className="block text-center text-white py-2 hover:cursor-pointer rounded-full bg-black p-3">
-    <i className="far fa-share text-xl"></i>
-    <span className="ml-2">Compartir</span>
-  </p>
-  <a href='https://www.latidoeterno.com/'>
-    <p className="block text-center text-white py-2 hover:cursor-pointer rounded-full bg-black p-3">
-      <i className="far fa-home text-xl"></i>
-      <span className="ml-2">Tienda</span>
-    </p>
-  </a>
-  <p className="block text-center text-white py-2 hover:cursor-pointer rounded-full bg-rojo p-3">
-    <i className="far fa-sign-in-alt text-xl"></i>
-    <span className="ml-2">Ingresar</span>
-  </p>
-</div>
-        
+          <p className="block text-center text-white py-2 hover:cursor-pointer rounded-full bg-black p-3">
+            <i className="far fa-share text-xl"></i>
+            <span className="ml-2">Compartir</span>
+          </p>
+          <a href='https://www.latidoeterno.com/'>
+            <p className="block text-center text-white py-2 hover:cursor-pointer rounded-full bg-black p-3">
+              <i className="far fa-home text-xl"></i>
+              <span className="ml-2">Tienda</span>
+            </p>
+          </a>
+          <p className="block text-center text-white py-2 hover:cursor-pointer rounded-full bg-rojo p-3">
+            <i className="far fa-sign-in-alt text-xl"></i>
+            <span className="ml-2">Ingresar</span>
+          </p>
+        </div>
       </header>
+      
       <div className="w-full flex flex-col items-center px-0 mt-14 md:mt-28">
         <div className="w-full max-w-6xl bg-white md:shadow-lg relative text-center md:text-left md:rounded-lg">
           <img src={memberData.BannerUrl} alt="Banner" className="w-full md:rounded-t-lg" />
