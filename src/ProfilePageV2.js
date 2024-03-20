@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Navigate } from 'react-router-dom';
 import './ProfilePageV2.css';
 
 const ProfilePageV2 = () => {
@@ -65,7 +65,7 @@ const ProfilePageV2 = () => {
 
 
   if (loading) return <div>Loading...</div>;
-  if (!memberData) return <div>No data available. Redirect to 404</div>;
+  if (!memberData) return <Navigate to="/404" />;
   
 
   return (
