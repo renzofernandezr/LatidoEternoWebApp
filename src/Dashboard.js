@@ -13,16 +13,6 @@ const DashBoard = () => {
         setToggle(id);
       }
     
-      const members = [
-        {   id: 1,
-            name: "Antonio Pedro Fernandez",
-            photoUrl: "https://lh3.googleusercontent.com/a/ACg8ocJIeFrk9J4aTwaIluwcyeaJXB8LoDEUPJCuxexbPynv946X=s96-c",
-            relationship: "Grandfather",
-            creationDate: "03/20/2024",
-            verificationStatus: "UNVERIFIED Medallion"},
-
-      ];
-
   return (
     <div className="min-h-screen flex flex-col bg-white md:bg-gray-100">
         <HeaderComp></HeaderComp>
