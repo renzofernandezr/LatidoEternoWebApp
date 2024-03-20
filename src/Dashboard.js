@@ -1,18 +1,19 @@
 import HeaderComp from './header_comp';
 import EditProfileComp from './editprofile_com';
 import MembersList from './memberview';
+import CrearPerfilComp from './crearperfil_com'; // Step 1: Import the CrearPerfilComp component
 import React, { useState } from 'react';
 import './Dashboard.css';
 
 const DashBoard = () => {
     const [toggle, setToggle] = useState(1);
-    const [showCreateProfile, setShowCreateProfile] = useState(false); // Step 1: State to manage visibility
+    const [showCreateProfile, setShowCreateProfile] = useState(false); // Step 2: State to manage visibility of CrearPerfilComp
 
     const userId = 1;
 
     function updateToggle(id) {
         setToggle(id);
-        setShowCreateProfile(false); // Step 1: Hide "Crear un nuevo perfil" section when toggling tabs
+        setShowCreateProfile(false); // Step 3: Hide CrearPerfilComp when toggling tabs
     }
 
     return (
@@ -42,14 +43,14 @@ const DashBoard = () => {
                         <div className="slate-line"></div>
 
                         <div className={toggle === 1 ? "show-content1" : "content1"}>
-                            {showCreateProfile ? ( // Step 2: Render "Crear un nuevo perfil" section conditionally
+                            {showCreateProfile ? (
                                 <>
                                     <div className="flex justify-center md:mt-0 mt-6">
                                         <button className="bg-rojo hover:bg-red-700 text-white py-2 px-4 rounded" onClick={() => setShowCreateProfile(false)}>
                                             Volver
                                         </button>
                                     </div>
-                                    {/* Content for creating a new profile */}
+                                    <CrearPerfilComp /> {/* Step 2: Render CrearPerfilComp */}
                                 </>
                             ) : (
                                 <>
