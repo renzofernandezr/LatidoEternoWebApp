@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+// import { useParams } from 'react-router-dom';
 import HeaderComp from './header_comp';
 import React, { useState } from 'react';
 import './Dashboard.css';
