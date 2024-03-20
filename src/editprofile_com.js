@@ -22,20 +22,24 @@ const EditProfileComp = () => {
           <h2 className="text-sm pt-4 text-left">Detalles de Ubicación</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 border-t">
           <div className="mb-4 mt-3" >
-              <label htmlFor="state" className="block text-gray-700 text-left">Estado:</label>
-              <input type="text" id="state" placeholder="Estado" className="mt-1 p-2 w-full border rounded" />
+              <label htmlFor="state" className="block text-gray-700 text-left">País:</label>
+              <input type="text" id="state" placeholder="País en donde te ubicas." className="mt-1 p-2 w-full border rounded" />
             </div>
             <div className="mb-4 mt-3" >
-              <label htmlFor="city" className="block text-gray-700 text-left">Ciudad:</label>
-              <input type="text" id="city" placeholder="Ciudad" className="mt-1 p-2 w-full border rounded" />
+              <label htmlFor="city" className="block text-gray-700 text-left">Región:</label>
+              <input type="text" id="city" placeholder="Región/Provincia/Estado/Departamento." className="mt-1 p-2 w-full border rounded" />
             </div>
           </div>
         </div>
-        <div className="flex justify-end mt-6">
-          <button className="bg-rojo hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
-            Guardar Cambios
-          </button>
-        </div>
+        <div className="flex justify-between mt-6">
+  <button className="bg-rojo hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+    Guardar Cambios
+  </button>
+  <button className="bg-rojo hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+    Finalizar Sesion
+  </button>
+</div>
+
       </div>
     </div>
   );

@@ -13,7 +13,7 @@ function App() {
         <Route path="/404" element={<NotFoundPage />} />
         <Route path="*" element={<NotFoundPage />} />
         <Route path="/Perfil/:uid" element={<ProfilePageV2 />} /> {/* Updated route */}
-        <Route path='/Dashboard' element={<DashBoard/>} />
+        <Route path='/DashBoard' element={<DashBoard/>} />
       </Routes>
     </Router>
   );
