@@ -24,7 +24,7 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-gray-100">
+    <div className="flex flex-col items-center justify-center h-screen bg-gray-100 md:bg-gray-100">
       <div className="max-w-md w-full bg-white rounded-lg shadow-lg overflow-hidden">
         <div className="flex justify-center">
           <img src={`${process.env.PUBLIC_URL}/logo.png`} alt="LOVETIDO ETERNO Logo" className="h-16 mt-6" />
@@ -32,25 +32,25 @@ const LoginPage = () => {
         <div className="p-6">
           <div className="flex justify-center">
             <button
-              onClick={() => toggleMode()}
-              className={`px-6 py-3 text-lg font-semibold ${isLogin ? 'text-rojo border-b-4 border-transparent hover:border-black' : 'text-gray-800 hover:text-black'} focus:outline-none`}
+              onClick={() => setIsLogin(true)}
+              className={`px-6 py-3 text-lg font-semibold ${isLogin ? 'text-rojo border-b-4 border-black' : 'text-gray-800'} focus:outline-none`}
             >
               Ingresar
             </button>
             <button
-              onClick={() => toggleMode()}
-              className={`px-6 py-3 text-lg font-semibold ${isLogin ? 'text-gray-800 hover:text-black' : 'text-rojo border-b-4 border-transparent hover:border-black'} focus:outline-none`}
+              onClick={() => setIsLogin(false)}
+              className={`px-6 py-3 text-lg font-semibold ${isLogin ? 'text-gray-800' : 'text-rojo border-b-4 border-black'} focus:outline-none`}
             >
               Regístrate
             </button>
           </div>
-          <p className="mt-4 text-sm text-rojo text-center">
-          ¡Bienvenido de vuelta! <br />
-            <span className="text-black">Por favor ingresa tu correo electrónico y contraseña a continuación.</span>.
+          <p className="mt-4 text-sm text-black text-center">
+            <span className="font-bold text-lg">{isLogin ? '¡Bienvenido de vuelta!' : '¡Bienvenido!'}</span> <br />
+            <span className="text-black">{isLogin ? 'Por favor ingresa tu correo electrónico y contraseña a continuación.' : 'Por favor completa los campos para registrarte.'}</span>
           </p>
           {isLogin ? (
             <form className="mt-6">
-              <input className="w-full px-4 py-3 mb-4 bg-gray-200 rounded-lg focus:outline-none focus:bg-white" type="email" placeholder="Tu Mejor Email" required />
+              <input className="w-full px-4 py-3 mb-4 bg-gray-200 rounded-lg focus:outline-none focus:bg-white" type="email" placeholder="Email" required />
               <div className="relative">
                 <input
                   className="w-full px-4 py-3 mb-4 bg-gray-200 rounded-lg focus:outline-none focus:bg-white"
@@ -85,7 +85,7 @@ const LoginPage = () => {
             <form className="mt-6">
               <input className="w-full px-4 py-3 mb-4 bg-gray-200 rounded-lg focus:outline-none focus:bg-white" type="text" placeholder="Nombre" required />
               <input className="w-full px-4 py-3 mb-4 bg-gray-200 rounded-lg focus:outline-none focus:bg-white" type="text" placeholder="Apellido" required />
-              <input className="w-full px-4 py-3 mb-4 bg-gray-200 rounded-lg focus:outline-none focus:bg-white" type="email" placeholder="Email" required />
+              <input className="w-full px-4 py-3 mb-4 bg-gray-200 rounded-lg focus:outline-none focus:bg-white" type="email" placeholder="Tu Mejor Email" required />
               <div className="relative">
                 <input
                   className="w-full px-4 py-3 mb-4 bg-gray-200 rounded-lg focus:outline-none focus:bg-white"
@@ -107,6 +107,7 @@ const LoginPage = () => {
                   />
                 </button>
               </div>
+              <div className="relative">
               <input
                 className="w-full px-4 py-3 mb-4 bg-gray-200 rounded-lg focus:outline-none focus:bg-white"
                 type={showPassword ? "text" : "password"}
@@ -115,6 +116,18 @@ const LoginPage = () => {
                 onChange={handleConfirmPasswordChange}
                 required
               />
+              <button
+                  type="button"
+                  className="absolute inset-y-0 right-6 bottom-2 px-0 py-0 mr-0 focus:outline-none"
+                  onClick={() => togglePasswordVisibility()}
+                >
+                  <img
+                    src={`${process.env.PUBLIC_URL}/${showPassword ? 'ojocerrado.png' : 'ojo.png'}`}
+                    alt={showPassword ? "Ocultar Contraseña" : "Mostrar Contraseña"}
+                    className="h-8 w-8 text-gray-600"
+                  />
+                </button>
+              </div>
               <label className="flex items-center mt-3">
                 <input type="checkbox" className="mr-2 leading-tight" required />
                 <span className="text-sm text-gray-600">Acepto los términos y condiciones</span>
@@ -131,4 +144,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default LoginPage
