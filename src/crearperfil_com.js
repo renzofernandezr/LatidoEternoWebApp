@@ -5,11 +5,23 @@ import 'react-calendar/dist/Calendar.css';
 const CrearPerfilComp = () => {
   const [birthDate, setBirthDate] = useState(new Date());
   const [deathDate, setDeathDate] = useState(new Date());
+  const [showBirthCalendar, setShowBirthCalendar] = useState(false);
+  const [showDeathCalendar, setShowDeathCalendar] = useState(false);
+
+  const handleBirthDateChange = (date) => {
+    setBirthDate(date);
+    setShowBirthCalendar(false);
+  };
+
+  const handleDeathDateChange = (date) => {
+    setDeathDate(date);
+    setShowDeathCalendar(false);
+  };
 
   return (
-    <div className="flex justify-center bg-white">
-      <div className="bg-white w-full">
-        <h1 className="text-base font-semibold text-left">Detalles Personales</h1>
+    <div className="container mx-auto">
+      <div className="bg-white px-4 py-6 md:w-full md:max-full md:mx-full">
+        <h1 className="text-lg font-semibold text-left">Detalles Personales</h1>
         <p className="text-sm text-left mt-2 mb-4"> Tendrás la oportunidad de editarlo una vez publicado.</p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 border-t">
           <div className="flex flex-col mb-4 mt-3">
@@ -33,26 +45,41 @@ const CrearPerfilComp = () => {
           </div>
           <div className="mb-4 mt-3">
             <label htmlFor="birthDate" className="block text-gray-700 text-left">Fecha de Nacimiento: *</label>
-            <Calendar
-              onChange={date => setBirthDate(date)}
-              value={birthDate}
-              locale="es"
-              className="mt-1 w-full border rounded"
+            <input
+              type="text"
+              id="birthDate"
+              value={birthDate.toLocaleDateString()}
+              onClick={() => setShowBirthCalendar(true)}
+              readOnly
+              className="mt-1 w-full border rounded p-2"
             />
+            {showBirthCalendar && (
+              <Calendar
+                onChange={handleBirthDateChange}
+                value={birthDate}
+                locale="es"
+                className="mt-1 w-full border rounded"
+              />
+            )}
           </div>
           <div className="mb-4 mt-3">
             <label htmlFor="deathDate" className="block text-gray-700 text-left">Fecha de Defunción: *</label>
-            <Calendar
-              onChange={date => setDeathDate(date)}
-              value={deathDate}
-              locale="es"
-              className="mt-1 w-full border rounded"
+            <input
+              type="text"
+              id="deathDate"
+              value={deathDate.toLocaleDateString()}
+              onClick={() => setShowDeathCalendar(true)}
+              readOnly
+              className="mt-1 w-full border rounded p-2"
             />
-          </div>
-          
-          <div className="mb-4 mt-3 col-span-2">
-            <label htmlFor="phrase" className="block text-gray-700 text-left">Frase: *</label>
-            <input type="text" id="phrase" placeholder="Ejemplo: 'Su sabiduría y generosidad serán recordadas por siempre'" className="mt-1 p-2 w-full border rounded" />
+            {showDeathCalendar && (
+              <Calendar
+                onChange={handleDeathDateChange}
+                value={deathDate}
+                locale="es"
+                className="mt-1 w-full border rounded"
+              />
+            )}
           </div>
           
           <div className="flex flex-col mb-4 mt-3">
@@ -70,10 +97,16 @@ const CrearPerfilComp = () => {
             </select>
           </div>
         </div>
+        <div className="mb-4 mt-3 md:col-span-2">
+            <label htmlFor="phrase" className="block text-gray-700 text-left">Frase: *</label>
+            <input type="text" id="phrase" placeholder="Ejemplo: 'Su sabiduría y generosidad serán recordadas por siempre'" className="mt-1 p-2 w-full border rounded" />
+          </div>
+        
+        
         <div className="pt-0 md:pt-4">
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 ">
-            <div className="mb-4 mt-3 col-span-2">
+            <div className="mb-4 mt-3 md:col-span-2">
               <label htmlFor="biography" className="block text-gray-700 text-left">Biografía: *</label>
               <textarea id="biography" placeholder="Ingrese la biografía..." className="mt-1 p-2 w-full border rounded h-32"></textarea>
             </div>
@@ -81,36 +114,36 @@ const CrearPerfilComp = () => {
           </div>
         </div>
         <div className="pt-0 md:pt-4">
-          <h2 className="text-base font-semibold text-left">Carga de Contenido</h2>
-          <p className="text-sm text-left mt-2 mb-4"> Tendrás la oportunidad de editarlo una vez publicado.</p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 border-t">
-            <div className="flex flex-col mb-4 mt-3">
-              <label htmlFor="profilePicture" className="block text-gray-700 text-left">Foto de Perfil: *</label>
-              <input type="file" id="profilePicture" className="mt-1 p-2 w-full border rounded" />
-            </div>
-            <div className="flex flex-col mb-4 mt-3">
-              <label htmlFor="banner" className="block text-gray-700 text-left">Banner: *</label>
-              <input type="file" id="banner" className="mt-1 p-2 w-full border rounded" />
-            </div>
-            <div className="mb-4 mt-3 col-span-2">
-              <label htmlFor="photos" className="block text-gray-700 text-left">Fotos: *</label>
-              <input type="file" id="photos" multiple className="mt-1 p-2 w-full border rounded" />
-            </div>
-            <div className="mb-4 mt-3 col-span-2">
-              <label htmlFor="videos" className="block text-gray-700 text-left">Videos:</label>
-              <input type="file" id="videos" multiple className="mt-1 p-2 w-full border rounded" />
-            </div>
-          </div>
-        </div>
-        <div className="flex justify-between mt-6">
-          <button className="bg-rojo hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
-            Crear Nuevo Perfil
-          </button>
-         
-        </div>
-      </div>
+  <h2 className="text-lg font-semibold text-left">Carga de Contenido</h2>
+  <p className="text-sm text-left mt-2 mb-4">Tendrás la oportunidad de editarlo una vez publicado.</p>
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 border-t">
+    <div className="flex flex-col mb-4 mt-3">
+      <label htmlFor="profilePicture" className="block text-gray-700 text-left">Foto de Perfil: *</label>
+      <input type="file" id="profilePicture" accept="image/*" className="mt-1 p-2 w-full border rounded" />
     </div>
-  );
+    <div className="flex flex-col mb-4 mt-3">
+      <label htmlFor="banner" className="block text-gray-700 text-left">Banner: *</label>
+      <input type="file" id="banner" accept="image/*" className="mt-1 p-2 w-full border rounded" />
+    </div>
+    <div className="flex flex-col mb-4 mt-3 md:col-span-2">
+      <label htmlFor="photos" className="block text-gray-700 text-left">Fotos: *</label>
+      <input type="file" id="photos" accept="image/*" multiple className="mt-1 p-2 w-full border rounded" />
+    </div>
+    <div className="flex flex-col mb-4 mt-3 md:col-span-2">
+      <label htmlFor="videos" className="block text-gray-700 text-left">Videos:</label>
+      <input type="file" id="videos" accept="video/*" multiple className="mt-1 p-2 w-full border rounded" />
+    </div>
+  </div>
+</div>
+<div className="flex justify-between mt-6">
+  <button className="bg-rojo hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+    Crear Nuevo Perfil
+  </button>
+</div>
+</div>
+</div>
+);
 };
 
 export default CrearPerfilComp;
+
