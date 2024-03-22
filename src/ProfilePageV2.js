@@ -143,12 +143,13 @@ const ProfilePageV2 = () => {
       </div>
 
       <div className={toggle === 3  ? "show-content": "content"}>
-        <h1> Text 3</h1>
+      <div className="flex justify-center mt-6">
+          <button className="bg-rojo hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+            + Agregar Comentario
+          </button>
+        </div>
       </div>
     </div>
-
-
-
         </div>
       </div>
 
