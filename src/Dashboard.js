@@ -31,7 +31,7 @@ const DashBoard = () => {
                         <div className='flex flex-col justify-center text-center md:text-left'>
                             <h1 className="text-xl md:text-2xl font-bold">Renzo Fernandez</h1>
                             <h2 className="text-md">Email: renzofernandezg.rf@gmail.com</h2>
-                            <h2 className="text-md">Joined: 1 day ago</h2>
+                            <h2 className="text-md">Se unio hace 1 dia</h2>
                         </div>
                     </div>
 
