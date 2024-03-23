@@ -1,10 +1,18 @@
 import React, { useState } from "react";
 
-const UploadModal = ({ onClose }) => {
+const UploadModal = ({ onClose, onUpload }) => {
   const [mediaType, setMediaType] = useState("photos");
   const [selectedFiles, setSelectedFiles] = useState([]);
   const [youtubeLink, setYoutubeLink] = useState("");
   const [description, setDescription] = useState("");
+  
+
+    const handleSubirClick = () => {
+      // Call the onUpload function with selected files
+      onUpload(selectedFiles);
+      onClose(); // Close the modal after upload
+    };
+
 
   const handleClose = () => {
     onClose();
@@ -25,7 +33,7 @@ const UploadModal = ({ onClose }) => {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-500 bg-opacity-50">
-      <div className="bg-white p-6 rounded-lg max-w-md">
+    <div className="bg-white p-6 rounded-lg max-w-md">
         <h2 className="text-xl font-semibold mb-4 text-center">Subir Contenido</h2>
         <div className="mb-4">
           <h3 className="font-semibold">Selecciona el tipo de contenido:</h3>
@@ -71,7 +79,8 @@ const UploadModal = ({ onClose }) => {
           ></textarea>
         </div>
         <div className="flex justify-between">
-          <button className="bg-rojo hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onClick={handleClose}>
+          {/* Call handleSubirClick when Subir button is clicked */}
+          <button className="bg-rojo hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onClick={handleSubirClick}>
             Subir
           </button>
           <button className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded" onClick={handleClose}>

@@ -10,8 +10,6 @@ const ProfilePageV2 = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalContent, setModalContent] = useState({ url: '', description: '', fecha_creacion: '' });
 
-
-
   const { uid } = useParams();
   const [memberData, setMemberData] = useState(null);
   const [mediaData, setMediaData] = useState([]);
