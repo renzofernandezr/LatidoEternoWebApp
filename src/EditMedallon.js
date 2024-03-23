@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import './ProfilePageV2.css';
 import CrearPerfilComp from './crearperfil_com';
 import UploadModal from './UploadModal';
+import CommentCard from './comentariocard';
+
 
 const EditMedallon = () => {
   const logoSrc = `${process.env.PUBLIC_URL}/logoh.png`;

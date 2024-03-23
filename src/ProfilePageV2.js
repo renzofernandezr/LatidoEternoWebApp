@@ -1,20 +1,23 @@
 import React, { useState, useEffect } from 'react';
+import CommentCard from './comentariocard';
 import { useParams, Navigate } from 'react-router-dom';
+import EscribirComentario from './EscribirComentario';
 import './ProfilePageV2.css';
+
 
 const ProfilePageV2 = () => {
   const logoSrc = `${process.env.PUBLIC_URL}/logoh.png`;
   // const bannerSrc = `${process.env.PUBLIC_URL}/banner.jpg`;
   // const profilePicSrc = `${process.env.PUBLIC_URL}/profile.jpg`;
+  const [isCommentModalOpen, setIsCommentModalOpen] = useState(false); // State for comment modal
   const [toggle, setToggle] = useState(2);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalContent, setModalContent] = useState({ url: '', description: '', fecha_creacion: '' });
-
   const { uid } = useParams();
   const [memberData, setMemberData] = useState(null);
   const [mediaData, setMediaData] = useState([]);
   const [loading, setLoading] = useState(true);
-  
+
   useEffect(() => {
     const fetchMedallonDetails = async () => {
       setLoading(true);
@@ -49,6 +52,14 @@ const ProfilePageV2 = () => {
   function closeModal() {
     setIsModalOpen(false);
     document.body.style.overflow = 'auto'; // Re-enable scrolling
+  }
+
+  function openCommentModal() {
+    setIsCommentModalOpen(true);
+  }
+
+  function closeCommentModal() {
+    setIsCommentModalOpen(false);
   }
 
   
@@ -140,15 +151,18 @@ const ProfilePageV2 = () => {
   </div>
       </div>
 
-      <div className={toggle === 3  ? "show-content": "content"}>
-      <div className="flex justify-center mt-6">
-          <button className="bg-rojo hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+      <div className={toggle === 3 ? "show-content" : "content"}>
+        <div className="flex justify-center mt-6">
+          <button
+            className="bg-rojo hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+            onClick={openCommentModal} // Open the modal when the button is clicked
+          >
             + Agregar Comentario
           </button>
-        
-        
-        
-        </div>
+          </div>
+      </div>
+      <div>
+        <CommentCard></CommentCard>
       </div>
     </div>
         </div>
@@ -188,7 +202,9 @@ const ProfilePageV2 = () => {
     </div>
   </div>
 )}
-
+ {isCommentModalOpen && (
+        <EscribirComentario onClose={closeCommentModal} /> //  component when isCommentModalOpen is true
+      )}
     </div>    
   );
 };
