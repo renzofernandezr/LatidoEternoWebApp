@@ -147,6 +147,9 @@ const ProfilePageV2 = () => {
           <button className="bg-rojo hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
             + Agregar Comentario
           </button>
+        
+        
+        
         </div>
       </div>
     </div>

@@ -38,7 +38,7 @@ const DashBoard = () => {
                     <div className="my-5">
                         <ul className="flex flex-wrap items-center justify-center text-black space-x-10">
                             <li className={toggle === 1 ? 'selected' : ''} onClick={() => updateToggle(1)}>Medallones</li>
-                            <li className={toggle === 2 ? 'selected' : ''} onClick={() => updateToggle(2)}>Mi Cuenta</li>
+                            <li className={toggle === 3 ? 'selected' : ''} onClick={() => updateToggle(2)}>Mi Cuenta</li>
                         </ul>
                         <div className="slate-line"></div>
 
@@ -65,7 +65,7 @@ const DashBoard = () => {
                                 </>
                             )}
                         </div>
-
+                       
                         <div className={toggle === 2 ? "show-content1" : "content1"}>
                             <EditProfileComp></EditProfileComp>
                         </div>

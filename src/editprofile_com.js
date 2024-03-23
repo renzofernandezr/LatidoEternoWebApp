@@ -1,4 +1,9 @@
 import React from "react";
+import Select from 'react-select';
+
+const options = [
+   
+];
 
 const EditProfileComp = () => {
   return (
@@ -22,12 +27,18 @@ const EditProfileComp = () => {
           <h2 className="text-sm pt-4 text-left">Detalles de Ubicación</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 border-t">
           <div className="mb-4 mt-3" >
-              <label htmlFor="state" className="block text-gray-700 text-left">País:</label>
-              <input type="text" id="state" placeholder="País en donde te ubicas." className="mt-1 p-2 w-full border rounded" />
+          <label htmlFor="country" className="block text-gray-700 text-left">País: *</label>
+            <Select
+              options={options}
+              placeholder="-- Selecciona o escriba --"
+            />
             </div>
             <div className="mb-4 mt-3" >
-              <label htmlFor="city" className="block text-gray-700 text-left">Región:</label>
-              <input type="text" id="city" placeholder="Región/Provincia/Estado/Departamento." className="mt-1 p-2 w-full border rounded" />
+            <label htmlFor="country" className="block text-gray-700 text-left">Region: *</label>
+            <Select
+              options={options}
+              placeholder="-- Selecciona o escriba --"
+            />
             </div>
           </div>
         </div>
