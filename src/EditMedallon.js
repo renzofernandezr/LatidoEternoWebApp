@@ -26,7 +26,7 @@ const EditMedallon = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-white md:bg-gray-100">
+    <div className="min-h-screen flex flex-col bg-white">
       <header className="w-full h-14 md:h-20 flex justify-center md:justify-between items-center bg-white fixed top-0 z-50 shadow-md px-4 md:px-20">
         <div className="flex-grow md:flex-grow-0 flex justify-center">
           <img src={logoSrc} alt="Logo" className="h-11 md:h-16"/>
@@ -95,13 +95,10 @@ const EditMedallon = () => {
                     </div>
                   ))}
                   <div className="bg-gray-200 cursor-pointer rounded-lg overflow-hidden relative flex justify-center items-center" style={{ paddingTop: '100%' }} onClick={() => setModalOpen(true)}>
-                    <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                      </svg>
-                      <p className="text-gray-400 text-sm mt-1">Upload</p>
-                    </span>
-                  </div>
+                  <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
+  <img src="/iconsubir.png" className="h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" alt="Upload icon"/>
+  <p className="text-gray-500 text-sm mt-1 text-center">Click para subir contenido</p>
+</div>         </div>
                 </div>
               </div>
             )}
