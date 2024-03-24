@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import './ProfilePageV2.css';
 import CrearPerfilComp from './crearperfil_com';
 import UploadModal from './UploadModal';
-import CommentCard from './comentariocard';
-
 
 const EditMedallon = () => {
   const logoSrc = `${process.env.PUBLIC_URL}/logoh.png`;
@@ -27,29 +25,30 @@ const EditMedallon = () => {
   };
 
   return (
-   
-   
-   
-   <div className="min-h-screen flex flex-col bg-white md:bg-gray-100">
+    <div className="min-h-screen flex flex-col bg-white md:bg-gray-100">
       <header className="w-full h-14 md:h-20 flex justify-center md:justify-between items-center bg-white fixed top-0 z-50 shadow-md px-4 md:px-20">
         <div className="flex-grow md:flex-grow-0 flex justify-center">
           <img src={logoSrc} alt="Logo" className="h-11 md:h-16"/>
         </div>
       </header>
-      <div className="w-full max-w-6xl bg-white md:shadow-lg relative mx-auto md:rounded-lg flex justify-center">
-        <div className="mb-20 w-full flex flex-col px-0 mt-14 md:mt-28">
+      <div className="w-full max-w-6xl bg-white md:shadow-lg relative mx-auto md:rounded-lg flex justify-center mt-14 md:mt-20">
+        <div className="mb-20 w-full flex flex-col px-0">
           <div>
-            <div className="bg-white md:rounded-lg mb-6 md:mb-0">
+            <div className="bg-white md:rounded-lg mb-6 md:mb-0 relative" style={{ marginTop: '4rem' }}>
               <img src="banner3.png" alt="Banner" className="w-full h-auto md:rounded-t-lg" />
-              <div className="relative">
               <button className="bg-rojo hover:bg-red-700 text-white font-bold py-2 px-4 rounded mb-4 absolute top-4 right-4">Subir Banner</button>
-                <div className="w-full max-w-6xl bg-white md:shadow-lg relative text-center md:text-left md:rounded-lg">
-                  <img src="banner2.jpg" alt="Profile" className="rounded-full border-6 border-white absolute left-1/2 md:left-32 transform -translate-x-1/2 -translate-y-1/2 w-36 h-36" />
-                </div>
-                <button className="absolute md:text-left transform -translate-x-1/2 ml-48 bg-rojo text-gray-600 rounded-full w-12 h-12 flex items-center justify-center hover:bg-black">
-                <span role="img" aria-label="edit">
-  <img src="editicon2.png" alt="Edit Icon" className="h-6 w-6" />
-</span>                  </button>
+              <div className="w-full max-w-6xl bg-white md:shadow-lg relative text-center md:text-left md:rounded-lg">
+                <img src="banner2.jpg" alt="Profile" className="rounded-full border-6 border-white absolute left-1/2 md:left-52 transform -translate-x-1/2 -translate-y-1/2 w-52 h-52" />
+                <button className="absolute md:text-left transform -translate-x-1/2 bg-rojo text-gray-600 rounded-full w-12 h-12 flex items-center justify-center hover:bg-black ml-52 mt-20">
+                  <span role="img" aria-label="edit">
+                    <img src="editicon2.png" alt="Edit Icon" className="h-6 w-6" />
+                  </span>
+                </button>
+              </div>
+              <div className="text-center mt-4 ">
+                <h2 className="text-xl font-semibold">Alberto Garcia Perez</h2>
+                <p className="text-sm text-gray-600">Estado: • No verificado</p>
+                <button className="bg-rojo hover:bg-red-700 text-white font-bold py-2 px-4 rounded mt-2">Ver Perfil Público</button>
               </div>
             </div>
           </div>
@@ -59,8 +58,8 @@ const EditMedallon = () => {
         <div className="w-full max-w-6xl bg-white md:shadow-lg relative text-center md:text-left md:rounded-lg">
           <div className="my-5">
             <ul className="flex flex-wrap items-center justify-center text-black space-x-10">
-              <li className={toggle === 1 ? 'selected' : ''} onClick={() => updateToggle(1)}>Datos Personales</li>
-              <li className={toggle === 2 ? 'selected' : ''} onClick={() => updateToggle(2)}>Subir Contenido</li>
+              <li className={toggle === 1 ? 'selected' : ''} onClick={() => updateToggle(1)}>Informacion</li>
+              <li className={toggle === 2 ? 'selected' : ''} onClick={() => updateToggle(2)}>Contenido</li>
               <li className={toggle === 3 ? 'selected' : ''} onClick={() => updateToggle(3)}>Comentarios (0)</li>
             </ul>
             <div className="slate-line"></div>
@@ -69,10 +68,10 @@ const EditMedallon = () => {
               <div className="show-content">
                 <CrearPerfilComp hideSection={true} />
                 <div className="flex justify-between mt-4 ml-20 mr-20">
-                  <button className="bg-rojo hover:bg-red-700 text-white font-bold py-2 px-4 rounded mb-4 ">
+                  <button className="bg-rojo hover:bg-red-700 text-white font-bold py-2 px-4 rounded mb-4">
                     Guardar Cambios
                   </button>
-                  <button className="bg-rojo hover:bg-red-700 text-white font-bold py-2 px-4 rounded mb-4 ">
+                  <button className="bg-rojo hover:bg-red-700 text-white font-bold py-2 px-4 rounded mb-4">
                     Eliminar Perfil
                   </button>
                 </div>
@@ -115,4 +114,4 @@ const EditMedallon = () => {
   );
 };
 
-export default EditMedallon;
+export default EditMedallon

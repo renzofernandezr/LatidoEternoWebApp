@@ -106,7 +106,7 @@ const ProfilePageV2 = () => {
         <div className="w-full max-w-6xl bg-white md:shadow-lg relative text-center md:text-left md:rounded-lg">
           <img src={memberData.BannerUrl} alt="Banner" className="w-full md:rounded-t-lg" />
           <img src={memberData.AvatarUrl} alt="Profile" className="rounded-full border-6 border-white absolute left-1/2 md:left-32 transform -translate-x-1/2 -translate-y-1/2 w-36 h-36" />
-          <h2 className="text-3xl font-bold text-rojo mt-20 md:mt-6 md:mx-60">{`${memberData.Nombre} ${memberData.Apellido}`}</h2>
+          <h2 className="text-3xl font-bold text-black mt-20 md:mt-6 md:mx-60">{`${memberData.Nombre} ${memberData.Apellido}`}</h2>
           <p className="text-base text-gray-400 mx-16 my-3 italic transform md:mx-60 ">{memberData.Frase}</p>
           <div className="flex justify-center md:justify-start mt-4 md:mx-60 md:mb-10">
             <img src={memberData.Pais.FlagImageUrl} alt="Country Flag" className="w-auto h-6 mr-2 rounded-md" />
@@ -160,9 +160,7 @@ const ProfilePageV2 = () => {
             + Agregar Comentario
           </button>
           </div>
-      </div>
-      <div>
-        <CommentCard></CommentCard>
+          <div><CommentCard></CommentCard></div>
       </div>
     </div>
         </div>
