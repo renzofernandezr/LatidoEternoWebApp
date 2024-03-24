@@ -152,15 +152,17 @@ const ProfilePageV2 = () => {
       </div>
 
       <div className={toggle === 3 ? "show-content" : "content"}>
-        <div className="flex justify-center mt-6">
+      <div className="flex justify-center mt-6 mb-4">
           <button
-            className="bg-rojo hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-            onClick={openCommentModal} // Open the modal when the button is clicked
+    className="bg-rojo hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+    onClick={openCommentModal} // Open the modal when the button is clicked
           >
             + Agregar Comentario
           </button>
           </div>
-          <div><CommentCard></CommentCard></div>
+          <div className="pb-10 pr-10 pl-10 text-left ">
+  <CommentCard></CommentCard>
+</div>
       </div>
     </div>
         </div>

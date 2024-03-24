@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './ProfilePageV2.css';
 import CrearPerfilComp from './crearperfil_com';
+import CommentCard from './comentariocard';
 import UploadModal from './UploadModal';
 
 const EditMedallon = () => {
@@ -65,7 +66,7 @@ const EditMedallon = () => {
             <div className="slate-line"></div>
             <div className="flex"></div>
             {toggle === 1 && (
-              <div className="show-content">
+              <div className="show-content mr-8 ml-8">
                 <CrearPerfilComp hideSection={true} />
                 <div className="flex justify-between mt-4 ml-20 mr-20">
                   <button className="bg-rojo hover:bg-red-700 text-white font-bold py-2 px-4 rounded mb-4">
@@ -104,9 +105,20 @@ const EditMedallon = () => {
                 </div>
               </div>
             )}
+       {toggle === 3 && (
+              <div className="show-content">
+                {/* Comment Content */}
+                <div className="grid grid-cols-1 md:grid-cols-1 gap-8 ">
+                  {/* Comment Cards */}
+                  <CommentCardSection />
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>
+
+      {/* Upload Modal */}
       {modalOpen && (
         <UploadModal onClose={() => setModalOpen(false)} onUpload={handleFileUpload} />
       )}
@@ -114,4 +126,25 @@ const EditMedallon = () => {
   );
 };
 
-export default EditMedallon
+const CommentCardSection = () => {
+  return (
+    <div className="col-span-1 relative">
+<div className="absolute top-0 left-32 w-full flex justify-center space-x-3.5 mt-4 z-10">
+        
+        
+<button className="bg-green-500 hover:bg-green-600 text-white font-bold py-1 px-3 md:py-2 md:px-4 rounded mx-1 md:mx-0">          Aprovar
+        </button>
+        <button className="bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-3 md:py-2 md:px-4 rounded mx-1 md:mx-0">          Anular
+        </button>
+      </div>
+      <CommentCard 
+        author="Author Name"
+        text="Comment Text"
+        timestamp="Timestamp"
+      />
+     
+    </div>
+  );
+};
+
+export default EditMedallon;
