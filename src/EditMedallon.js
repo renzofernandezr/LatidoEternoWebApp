@@ -26,35 +26,34 @@ const EditMedallon = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-white">
+    <div className="min-h-screen flex flex-col bg-white md:bg-gray-100">
       <header className="w-full h-14 md:h-20 flex justify-center md:justify-between items-center bg-white fixed top-0 z-50 shadow-md px-4 md:px-20">
         <div className="flex-grow md:flex-grow-0 flex justify-center">
           <img src={logoSrc} alt="Logo" className="h-11 md:h-16"/>
         </div>
       </header>
-      <div className="w-full max-w-6xl bg-white md:shadow-lg relative mx-auto md:rounded-lg flex justify-center mt-14 md:mt-20">
-        <div className="mb-20 w-full flex flex-col px-0">
-          <div>
-            <div className="bg-white md:rounded-lg mb-6 md:mb-0 relative" style={{ marginTop: '4rem' }}>
-              <img src="banner3.png" alt="Banner" className="w-full h-auto md:rounded-t-lg" />
-              <button className="bg-rojo hover:bg-red-700 text-white font-bold py-2 px-4 rounded mb-4 absolute top-4 right-4">Subir Banner</button>
-              <div className="w-full max-w-6xl bg-white md:shadow-lg relative text-center md:text-left md:rounded-lg">
-                <img src="banner2.jpg" alt="Profile" className="rounded-full border-6 border-white absolute left-1/2 md:left-52 transform -translate-x-1/2 -translate-y-1/2 w-52 h-52" />
-                <button className="absolute md:text-left transform -translate-x-1/2 bg-rojo text-gray-600 rounded-full w-12 h-12 flex items-center justify-center hover:bg-black ml-52 mt-20">
-                  <span role="img" aria-label="edit">
-                    <img src="editicon2.png" alt="Edit Icon" className="h-6 w-6" />
-                  </span>
-                </button>
-              </div>
-              <div className="text-center mt-4 ">
-                <h2 className="text-xl font-semibold">Alberto Garcia Perez</h2>
-                <p className="text-sm text-gray-600">Estado: • No verificado</p>
-                <button className="bg-rojo hover:bg-red-700 text-white font-bold py-2 px-4 rounded mt-2">Ver Perfil Público</button>
-              </div>
-            </div>
+
+      <div className="w-full max-w-6xl bg-white md:shadow-lg mx-auto mt-14 md:mt-24 md:rounded-lg">
+        <div className="mb-10 w-full flex-col px-0 relative text-center md:text-left">
+        <div class="relative">
+            <img src='bannerle.png' alt="Banner" className="w-full md:rounded-lg align-middle" />
+            <p className="absolute flex items-center justify-center text-black bottom-0 right-4 md:bottom-4 md:right-4 h-12 w-12 md:w-44 py-2 px-3
+             hover:cursor-pointer hover:bg-slate-200 rounded-md bg-slate-100">
+              <i className="fal fa-upload text-l"></i>
+              <span className="ml-2 text-sm hidden md:inline">Actualizar banner</span>
+            </p>             
           </div>
+          <div class="relative">
+            <img src='banner2.jpg' alt="Profile" className="rounded-full border-6 border-white absolute left-1/2 md:left-32 transform -translate-x-1/2 -translate-y-1/2 w-36 h-36" />
+            <img src='editicon2.png' className='absolute left-56 md:left-40 top-3 h-10 w-10 bg-rojo rounded-full p-2 ' alt='edit'></img>
+          </div>
+          <h2 className="text-3xl font-bold text-black mt-20 md:mt-6 md:mx-60">Alberto Garcia Perez</h2>
+          <p className="text-base text-gray-400 mx-16 my-3 italic transform md:mx-60 ">Estado: • No verificado</p>
+          <button className="md:mx-60 bg-rojo hover:bg-red-700 text-white font-bold py-2 px-4 rounded mt-2">Ver Perfil Público</button>
         </div>
       </div>
+
+      
       <div className="w-full flex flex-col items-center px-0 mt-0 md:mt-6">
         <div className="w-full max-w-6xl bg-white md:shadow-lg relative text-center md:text-left md:rounded-lg">
           <div className="my-5">
