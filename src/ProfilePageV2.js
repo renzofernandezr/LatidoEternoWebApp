@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import CommentCard from './comentariocard';
+import CommentCard from './Componentes/comentario';
 import { useParams, Navigate } from 'react-router-dom';
-import EscribirComentario from './EscribirComentario';
-import './ProfilePageV2.css';
+import EscribirComentario from './PopUps/EscribirComentario_pop';
+import './Css/ProfilePageV2.css';
 
 
 const ProfilePageV2 = () => {

@@ -1,8 +1,15 @@
 import React, { useState } from 'react';
-import './ProfilePageV2.css';
-import CrearPerfilComp from './crearperfil_com';
-import CommentCard from './comentariocard';
-import UploadModal from './UploadModal';
+import './Css/ProfilePageV2.css';
+import CrearPerfilComp from './Componentes/crearmedallon_com';
+import CommentCard from './Componentes/comentario';
+import UploadModal from './PopUps/SubirContenido_pop';
+import SubirBanner from './PopUps/SubirBanner_pop';
+import SubirPFP from './PopUps/SubirPFP_pop';
+import EliminarPerfil from './PopUps/EliminarPerfil_pop';
+import ComoVerificar from './PopUps/ComoVerificar_pop';
+
+
+
 
 const EditMedallon = () => {
   const logoSrc = `${process.env.PUBLIC_URL}/logoh.png`;
@@ -10,15 +17,21 @@ const EditMedallon = () => {
   const [mediaFiles, setMediaFiles] = useState([]);
   const [dropdownVisible, setDropdownVisible] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
+  const [bannerPopupOpen, setBannerPopupOpen] = useState(false); // 
+  const [PFPPopupOpen, setPFPPopupOpen] = useState(false); // 
+  const [eliminarperfil, setEliminarPerfil] = useState(false); // 
+  const [comoverificar, setComoVerificar] = useState(false); // 
+
+
 
   function updateToggle(id) {
     setToggle(id);
   }
 
-    // Function to toggle dropdown visibility
-    const toggleDropdown = () => {
-      setDropdownVisible(!dropdownVisible);
-    };
+  // Function to toggle dropdown visibility
+  const toggleDropdown = () => {
+    setDropdownVisible(!dropdownVisible);
+  };
 
   const handleFileUpload = (files) => {
     setMediaFiles([...mediaFiles, ...files]);
@@ -42,16 +55,17 @@ const EditMedallon = () => {
       <div className="w-full max-w-6xl bg-white md:shadow-lg mx-auto mt-14 md:mt-24 md:rounded-lg">
         <div className="mb-10 w-full flex-col px-0 relative text-center md:text-left">
           <div className="relative">
-            <img src="5.png" alt="Banner" className="w-full md:rounded-lg align-middle" />
+            <img src="8.png" alt="Banner" className="w-full md:rounded-lg align-middle" />
             <p className="absolute flex items-center justify-center text-black bottom-0 right-4 md:bottom-4 md:right-4 h-12 w-12 md:w-48 py-2 px-3
-             hover:cursor-pointer hover:bg-gray-200 rounded-md bg-white">
+             hover:cursor-pointer hover:bg-gray-200 rounded-md bg-white mb-2" onClick={() => setBannerPopupOpen(true)}>
               <i className="fas fa-upload text-l"></i>
               <span className="ml-2 text-sm hidden md:inline font-semibold">Actualizar Banner</span>
             </p>
           </div>
           <div className="relative">
             <img src="ppf.png" alt="Profile" className="rounded-full border-6 border-white absolute left-1/2 md:left-32 transform -translate-x-1/2 -translate-y-1/2 w-36 h-36" />
-            <img src="editicon2.png" className="absolute left-56 md:left-40 top-3 h-10 w-10 bg-rojo rounded-full p-2 " alt="edit"></img>
+            <button onClick={() => setPFPPopupOpen(true)}>            <img src="editicon2.png" className="absolute left-56 md:left-40 top-3 h-10 w-10 bg-rojo rounded-full  p-2  hover:bg-red-700 " alt="edit" ></img>
+</button>
           </div>
           <h2 className="text-3xl font-bold text-black mt-20 md:mt-6 md:mx-60">Alberto Garcia Perez</h2>
           <p className="text-base text-gray-400 mx-16 my-3 italic transform md:mx-60 ">Estado: • No verificado</p>
@@ -73,10 +87,10 @@ const EditMedallon = () => {
       aria-orientation="vertical"
       aria-labelledby="options-menu"
     >
-      <button className="block px-4 py-2 text-black text-left" role="menuitem">
+      <button className="block px-4 py-2 text-black text-left" role="menuitem" onClick={() => setEliminarPerfil(true)}>
         Eliminar Perfil
       </button>
-      <button className="block px-4 py-2 text-black  text-left" role="menuitem">
+      <button className="block px-4 py-2 text-black  text-left" role="menuitem" onClick={() => setComoVerificar(true)}>
         Cómo Verificar Medallón
       </button>
     </div>
@@ -143,15 +157,26 @@ const EditMedallon = () => {
           </div>
           <div className="flex justify-center ">
             <button className="bg-rojo hover:bg-red-700 text-white font-bold py-2 px-4 rounded mb-4">
-              Guardar Cambios
+              Guardar y Regresar
             </button>
           </div>
         </div>
       </div>
 
-      {/* Upload Modal */}
       {modalOpen && (
         <UploadModal onClose={() => setModalOpen(false)} onUpload={handleFileUpload} />
+      )}
+       {bannerPopupOpen && (
+        <SubirBanner onClose={() => setBannerPopupOpen(false)} />
+      )}
+      {eliminarperfil && (
+        <EliminarPerfil onClose={() => setEliminarPerfil(false)} />
+      )}
+      {PFPPopupOpen && (
+        <SubirPFP onClose={() => setPFPPopupOpen(false)} />
+      )}
+       {comoverificar && (
+        <ComoVerificar onClose={() => setComoVerificar(false)} />
       )}
     </div>
   );

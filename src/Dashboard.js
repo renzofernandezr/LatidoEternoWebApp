@@ -1,9 +1,9 @@
-import HeaderComp from './header_comp';
-import EditProfileComp from './editprofile_com';
+import HeaderComp from './Componentes/header_comp';
+import EditProfileComp from './Componentes/editarperfil_com';
 import MembersList from './memberview';
-import CrearPerfilComp from './crearperfil_com'; // Step 1: Import the CrearPerfilComp component
+import CrearPerfilComp from './Componentes/crearmedallon_com'; // Step 1: Import the CrearPerfilComp component
 import React, { useState } from 'react';
-import './Dashboard.css';
+import './Css/Dashboard.css';
 
 const DashBoard = () => {
     const [toggle, setToggle] = useState(1);

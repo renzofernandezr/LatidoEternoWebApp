@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Login.css'; // Make sure the CSS file is in the same directory as this file
+import './Css/Login.css'; // Make sure the CSS file is in the same directory as this file
 
 const LoginPage = () => {
   const [isLogin, setIsLogin] = useState(true); // State to track whether user is in login or registration mode
