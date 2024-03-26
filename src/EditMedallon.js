@@ -26,7 +26,7 @@ const EditMedallon = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-white md:bg-gray-100">
+    <div className="min-h-screen flex flex-col bg-white">
       <header className="w-full h-14 md:h-20 flex justify-center md:justify-between items-center bg-white fixed top-0 z-50 shadow-md px-4 md:px-20">
         <div className="flex-grow md:flex-grow-0 flex justify-center">
           <img src={logoSrc} alt="Logo" className="h-11 md:h-16"/>
@@ -40,8 +40,8 @@ const EditMedallon = () => {
             <p className="absolute flex items-center justify-center text-black bottom-0 right-4 md:bottom-4 md:right-4 h-12 w-12 md:w-44 py-2 px-3
              hover:cursor-pointer hover:bg-slate-200 rounded-md bg-slate-100">
               <i className="fal fa-upload text-l"></i>
-              <span className="ml-2 text-sm hidden md:inline">Actualizar banner</span>
-            </p>             
+              <span className="ml-2 text-sm hidden md:inline">Actualizar Banner</span>
+            </p>              
           </div>
           <div class="relative">
             <img src='banner2.jpg' alt="Profile" className="rounded-full border-6 border-white absolute left-1/2 md:left-32 transform -translate-x-1/2 -translate-y-1/2 w-36 h-36" />
@@ -57,24 +57,18 @@ const EditMedallon = () => {
       <div className="w-full flex flex-col items-center px-0 mt-0 md:mt-6">
         <div className="w-full max-w-6xl bg-white md:shadow-lg relative text-center md:text-left md:rounded-lg">
           <div className="my-5">
-            <ul className="flex flex-wrap items-center justify-center text-black space-x-10">
-              <li className={toggle === 1 ? 'selected' : ''} onClick={() => updateToggle(1)}>Informacion</li>
+            <ul className="flex flex-wrap flex space-x-4 items-center justify-center text-black space-x-10">
+              <li className={toggle === 1 ? 'selected' : ''} onClick={() => updateToggle(1)}>Info</li>
               <li className={toggle === 2 ? 'selected' : ''} onClick={() => updateToggle(2)}>Contenido</li>
               <li className={toggle === 3 ? 'selected' : ''} onClick={() => updateToggle(3)}>Comentarios (0)</li>
             </ul>
+            
             <div className="slate-line"></div>
             <div className="flex"></div>
             {toggle === 1 && (
               <div className="show-content mr-8 ml-8">
                 <CrearPerfilComp hideSection={true} />
-                <div className="flex justify-between mt-4 ml-20 mr-20">
-                  <button className="bg-rojo hover:bg-red-700 text-white font-bold py-2 px-4 rounded mb-4">
-                    Guardar Cambios
-                  </button>
-                  <button className="bg-rojo hover:bg-red-700 text-white font-bold py-2 px-4 rounded mb-4">
-                    Eliminar Perfil
-                  </button>
-                </div>
+                
               </div>
             )}
             {toggle === 2 && (
@@ -96,7 +90,7 @@ const EditMedallon = () => {
                   <div className="bg-gray-200 cursor-pointer rounded-lg overflow-hidden relative flex justify-center items-center" style={{ paddingTop: '100%' }} onClick={() => setModalOpen(true)}>
                   <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
   <img src="/iconsubir.png" className="h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" alt="Upload icon"/>
-  <p className="text-gray-500 text-sm mt-1 text-center">Click para subir contenido</p>
+  <p className="text-gray-500 text-sm mt-1 text-center">Click para subir</p>
 </div>         </div>
                 </div>
               </div>
@@ -104,16 +98,21 @@ const EditMedallon = () => {
        {toggle === 3 && (
               <div className="show-content">
                 {/* Comment Content */}
-                <div className="grid grid-cols-1 md:grid-cols-1 gap-8 ">
+                <div className="grid grid-cols-1 md:grid-cols-1 gap-8 pr-12 text-left pl-12">
                   {/* Comment Cards */}
                   <CommentCardSection />
                 </div>
               </div>
             )}
           </div>
+          <div className="flex justify-center ">
+                  <button className="bg-rojo hover:bg-red-700 text-white font-bold py-2 px-4 rounded mb-4">
+                    Guardar Cambios
+                  </button>
+                </div>
         </div>
       </div>
-
+     
       {/* Upload Modal */}
       {modalOpen && (
         <UploadModal onClose={() => setModalOpen(false)} onUpload={handleFileUpload} />
@@ -125,12 +124,10 @@ const EditMedallon = () => {
 const CommentCardSection = () => {
   return (
     <div className="col-span-1 relative">
-<div className="absolute top-0 left-32 w-full flex justify-center space-x-3.5 mt-4 z-10">
-        
-        
+<div className="absolute md:top-0 md:left-32 w-full flex justify-center space-x-3.5 mt-4 z-10">
 <button className="bg-green-500 hover:bg-green-600 text-white font-bold py-1 px-3 md:py-2 md:px-4 rounded mx-1 md:mx-0">          Aprovar
         </button>
-        <button className="bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-3 md:py-2 md:px-4 rounded mx-1 md:mx-0">          Anular
+        <button className="bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-3 md:py-2 md:px-4 rounded mx-1 md:mx-0 ">          Anular
         </button>
       </div>
       <CommentCard 
