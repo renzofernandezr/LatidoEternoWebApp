@@ -42,7 +42,7 @@ const EditMedallon = () => {
       <div className="w-full max-w-6xl bg-white md:shadow-lg mx-auto mt-14 md:mt-24 md:rounded-lg">
         <div className="mb-10 w-full flex-col px-0 relative text-center md:text-left">
           <div className="relative">
-            <img src="3.png" alt="Banner" className="w-full md:rounded-lg align-middle" />
+            <img src="5.png" alt="Banner" className="w-full md:rounded-lg align-middle" />
             <p className="absolute flex items-center justify-center text-black bottom-0 right-4 md:bottom-4 md:right-4 h-12 w-12 md:w-48 py-2 px-3
              hover:cursor-pointer hover:bg-gray-200 rounded-md bg-white">
               <i className="fas fa-upload text-l"></i>
@@ -50,7 +50,7 @@ const EditMedallon = () => {
             </p>
           </div>
           <div className="relative">
-            <img src="banner2.jpg" alt="Profile" className="rounded-full border-6 border-white absolute left-1/2 md:left-32 transform -translate-x-1/2 -translate-y-1/2 w-36 h-36" />
+            <img src="ppf.png" alt="Profile" className="rounded-full border-6 border-white absolute left-1/2 md:left-32 transform -translate-x-1/2 -translate-y-1/2 w-36 h-36" />
             <img src="editicon2.png" className="absolute left-56 md:left-40 top-3 h-10 w-10 bg-rojo rounded-full p-2 " alt="edit"></img>
           </div>
           <h2 className="text-3xl font-bold text-black mt-20 md:mt-6 md:mx-60">Alberto Garcia Perez</h2>
