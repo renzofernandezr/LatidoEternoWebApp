@@ -42,11 +42,11 @@ const EditMedallon = () => {
       <div className="w-full max-w-6xl bg-white md:shadow-lg mx-auto mt-14 md:mt-24 md:rounded-lg">
         <div className="mb-10 w-full flex-col px-0 relative text-center md:text-left">
           <div className="relative">
-            <img src="bannerle.png" alt="Banner" className="w-full md:rounded-lg align-middle" />
-            <p className="absolute flex items-center justify-center text-black bottom-0 right-4 md:bottom-4 md:right-4 h-12 w-12 md:w-44 py-2 px-3
-             hover:cursor-pointer hover:bg-slate-200 rounded-md bg-slate-100">
-              <i className="fal fa-upload text-l"></i>
-              <span className="ml-2 text-sm hidden md:inline">Actualizar Banner</span>
+            <img src="3.png" alt="Banner" className="w-full md:rounded-lg align-middle" />
+            <p className="absolute flex items-center justify-center text-black bottom-0 right-4 md:bottom-4 md:right-4 h-12 w-12 md:w-48 py-2 px-3
+             hover:cursor-pointer hover:bg-gray-200 rounded-md bg-white">
+              <i className="fas fa-upload text-l"></i>
+              <span className="ml-2 text-sm hidden md:inline font-semibold">Actualizar Banner</span>
             </p>
           </div>
           <div className="relative">
@@ -57,31 +57,32 @@ const EditMedallon = () => {
           <p className="text-base text-gray-400 mx-16 my-3 italic transform md:mx-60 ">Estado: • No verificado</p>
           <button className="md:mx-60 bg-rojo hover:bg-red-700 text-white font-bold py-2 px-4 rounded mt-2">Ver Perfil Público</button>
           {/* Dropdown */}
-          <div className="relative inline-block text-left items-start">
+          <div className="relative inline-block md:right-60">
             <button
               onClick={toggleDropdown}
-              className="ml-2 bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded inline-flex items-center"
+              className="ml-2 bg-gray-200 hover:bg-gray-300 text-black font-semibold py-2 px-4 rounded inline-flex items-center"
             >
               <span>...</span>
             </button>
             
             {dropdownVisible && (
-  <div className="z-50 origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
+  <div className="z-50 origin-top-right absolute top-12 right-0 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
     <div
       className="py-1"
       role="menu"
       aria-orientation="vertical"
       aria-labelledby="options-menu"
     >
-      <button className="block px-4 py-2 text-black hover:bg-gray-100 hover:text-gray-900 text-left" role="menuitem">
+      <button className="block px-4 py-2 text-black text-left" role="menuitem">
         Eliminar Perfil
       </button>
-      <button className="block px-4 py-2 text-black hover:bg-gray-100 hover:text-gray-900 text-left" role="menuitem">
+      <button className="block px-4 py-2 text-black  text-left" role="menuitem">
         Cómo Verificar Medallón
       </button>
     </div>
   </div>
 )}
+
           </div>
           {/* End Dropdown */}
         </div>
@@ -123,7 +124,7 @@ const EditMedallon = () => {
                   <div className="bg-gray-200 cursor-pointer rounded-lg overflow-hidden relative flex justify-center items-center" style={{ paddingTop: '100%' }} onClick={() => setModalOpen(true)}>
                     <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
                       <
-                      img src="/iconsubir.png" className="h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" alt="Upload icon"/>
+                      img src="/iconsubir.png" className="h-12 w-12 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" alt="Upload icon"/>
                       <p className="text-gray-500 text-sm mt-1 text-center">Click para subir</p>
                     </div>
                   </div>
@@ -159,7 +160,7 @@ const EditMedallon = () => {
 const CommentCardSection = () => {
   return (
     <div className="col-span-1 relative">
-      <div className="absolute md:top-0 md:left-32 w-full flex justify-center space-x-3.5 mt-4 z-10">
+      <div className="absolute md:top-0 md:left-32 w-full flex justify-center space-x-3.5 mt-4 z-10 ">
         <button className="bg-green-500 hover:bg-green-600 text-white font-bold py-1 px-3 md:py-2 md:px-4 rounded mx-1 md:mx-0">
           Aprovar
         </button>
