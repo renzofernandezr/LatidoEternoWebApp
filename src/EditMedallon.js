@@ -52,7 +52,7 @@ const EditMedallon = () => {
       <div className="w-full max-w-6xl bg-white md:shadow-lg mx-auto mt-14 md:mt-24 md:rounded-lg">
         <div className="mb-10 w-full flex-col px-0 relative text-center md:text-left">
           <div className="relative">
-            <img src="8.png" alt="Banner" className="w-full md:rounded-lg align-middle" />
+            <img src="bannerfinal.png" alt="Banner" className="w-full md:rounded-lg align-middle" />
             <p className="absolute flex items-center justify-center text-black bottom-0 right-4 md:bottom-4 md:right-4 h-12 w-12 md:w-48 py-2 px-3
              hover:cursor-pointer hover:bg-gray-200 rounded-md bg-white mb-2" onClick={() => setBannerPopupOpen(true)}>
               <i className="fas fa-upload text-l"></i>

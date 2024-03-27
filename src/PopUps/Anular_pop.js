@@ -34,10 +34,10 @@ const Anular = ({ onClose, onConfirm }) => {
             Anular
           </button>
           <button onClick={onConfirm} className="bg-rojo hover:bg-red-600 text-white font-bold py-2 px-4 rounded mr-2">
-            Anular y Reportar
+            Reportar
           </button>
           <button onClick={handleClose} className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded">
-            No anular
+            Cancelar
           </button>
         </div>
       </div>

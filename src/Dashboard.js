@@ -1,6 +1,6 @@
 import HeaderComp from './Componentes/header_comp';
 import EditProfileComp from './Componentes/editarperfil_com';
-import MembersList from './memberview';
+import MembersList from './Componentes/memberview';
 import CrearPerfilComp from './Componentes/crearmedallon_com'; // Step 1: Import the CrearPerfilComp component
 import React, { useState } from 'react';
 import './Css/Dashboard.css';

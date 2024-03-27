@@ -27,8 +27,8 @@ const ComoVerificar = ({ onClose, onConfirm }) => {
         </div>
         <h2 className="text-xl font-semibold mb-4 text-center">¿Cómo verificar tu medallón?</h2>
         <p className="text-gray-700 mb-4">
-          Si tu perfil creado aparece como no verificado, significa que aún no has vinculado ningún medallón con tu perfil.
-          Para ver un tutorial de cómo funciona, por favor haz clic en el botón debajo.
+          Si tu perfil creado aparece como no verificado, significa que aún no has vinculado un medallón con tu perfil.
+          Para ver un tutorial de cómo hacerlo, por favor haz clic en el botón debajo.
         </p>
         <div className="flex justify-center mb-4">
           <button onClick={onConfirm} className="bg-rojo hover:bg-red-700 text-white font-bold py-2 px-4 rounded mr-2">

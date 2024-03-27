@@ -7,10 +7,10 @@ const MemberCard = ({ member }) => {
       <div className="px-6 py-4">
         <div className="font-bold text-xl mb-2 text-center">{member.name}</div>
         <p className="text-gray-700 text-base text-center">
-          Relationship: {member.relationship}
+          Relacion: {member.relationship}
         </p>
         <p className="text-gray-600 text-sm text-center">
-          Created in {member.creationDate}
+         Creado en: {member.creationDate}
         </p>
         <p className="text-red-500 text-sm text-center">
           {member.verificationStatus}
