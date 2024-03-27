@@ -39,6 +39,7 @@ const DashBoard = () => {
                         <ul className="flex flex-wrap items-center justify-center text-black space-x-10">
                             <li className={toggle === 1 ? 'selected' : ''} onClick={() => updateToggle(1)}>Medallones</li>
                             <li className={toggle === 3 ? 'selected' : ''} onClick={() => updateToggle(2)}>Mi Cuenta</li>
+
                         </ul>
                         <div className="slate-line"></div>
 

@@ -65,8 +65,9 @@ const EditMedallon = () => {
 </button>
           </div>
           <h2 className="text-3xl font-bold text-black mt-20 md:mt-6 md:mx-60">Alberto Garcia Perez</h2>
-          <p className="text-base text-gray-400 mx-16 my-3 italic transform md:mx-60 ">Estado: • No verificado</p>
-          <button className="md:mx-60 bg-rojo hover:bg-red-700 text-white font-bold py-2 px-4 rounded mt-2">Ver Perfil Público</button>
+          <p className="text-base mx-16 my-3 italic transform md:mx-60">
+  Estado: <span className="text-gray-400"></span> <span className="text-rojo">• No verificado</span>
+</p>          <button className="md:mx-60 bg-rojo hover:bg-red-700 text-white font-bold py-2 px-4 rounded mt-2">Ver Perfil Público</button>
           {/* Dropdown */}
           <div className="relative inline-block md:right-60">
             <button

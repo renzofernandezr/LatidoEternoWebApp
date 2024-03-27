@@ -41,7 +41,7 @@ const EscribirComentario = ({ onClose, onUpload }) => {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-500 bg-opacity-50 pl-6 pr-6">
-      <div className="bg-white p-6 rounded-lg max-w-md overflow-hidden">
+      <div className="bg-white p-6 rounded-lg max-w-md overflow-hidden" style={{ maxHeight: "90vh", overflowY: "auto" }}>
         <div className="flex items-center justify-center mb-4">
           <img
             src='https://lh3.googleusercontent.com/a/ACg8ocJIeFrk9J4aTwaIluwcyeaJXB8LoDEUPJCuxexbPynv946X=s96-c'
@@ -53,7 +53,7 @@ const EscribirComentario = ({ onClose, onUpload }) => {
           </div>
         </div>
 
-        <div className="h-64 overflow-y-auto">
+        <div>
           <p className="mb-2 text-center text-sm">
             <hr className="my-1 border-gray-300 mb-3" />
             Cada comentario e imagen deberá ser aprobado por el propietario del perfil
