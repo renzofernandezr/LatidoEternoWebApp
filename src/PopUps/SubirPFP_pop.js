@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDropzone } from "react-dropzone";
 import Cropper from "react-easy-crop";
 
@@ -65,8 +65,17 @@ const SubirBanner = ({ onClose, onUpload }) => {
     });
   };
 
+  useEffect(() => {
+    // Disable scrolling on the body when the pop-up is open
+    document.body.style.overflow = 'hidden';
+    // Re-enable scrolling on the body when the pop-up is closed
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, []);
+
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-500 bg-opacity-50">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-500 bg-opacity-50 pl-6 pr-6 overflow-y-auto">
       <div className="bg-white p-6 rounded-lg max-w-md">
         <h2 className="text-xl font-semibold mb-4 text-center">Subir Foto de Perfil</h2>
         <div className="mb-4 border-dashed border-2 border-gray-400 rounded-md p-4">
@@ -76,20 +85,25 @@ const SubirBanner = ({ onClose, onUpload }) => {
           </div>
         </div>
         {selectedFile && (
-          <div className="mb-4 relative" style={{ height: "300px", width: "100%" }}>
-            <Cropper
-              image={URL.createObjectURL(selectedFile)}
-              crop={crop}
-              zoom={zoom}
-              aspect={1}
-              onCropChange={onCropChange}
-              onZoomChange={onZoomChange}
-              cropShape="round"
-              style={{ height: "100%", width: "100%" }}
-            />
-          </div>
+          <>
+            <div className="mb-4 relative" style={{ height: "300px", width: "100%" }}>
+              <Cropper
+                image={URL.createObjectURL(selectedFile)}
+                crop={crop}
+                zoom={zoom}
+                aspect={1}
+                onCropChange={onCropChange}
+                onZoomChange={onZoomChange}
+                cropShape="round"
+                style={{ height: "100%", width: "100%" }}
+              />
+            </div>
+            <p className="text-xs text-center text-gray-600 mt-2">
+              Usa los dedos o la rueda del mouse para hacer zoom y selecciónar una imagen más precisa.
+            </p>
+          </>
         )}
-        <div className="flex justify-between">
+        <div className="flex justify-between mt-4">
           <button className="bg-rojo hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onClick={handleSubirClick}>
             Subir
           </button>

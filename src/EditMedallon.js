@@ -8,9 +8,6 @@ import SubirPFP from './PopUps/SubirPFP_pop';
 import EliminarPerfil from './PopUps/EliminarPerfil_pop';
 import ComoVerificar from './PopUps/ComoVerificar_pop';
 
-
-
-
 const EditMedallon = () => {
   const logoSrc = `${process.env.PUBLIC_URL}/logoh.png`;
   const [toggle, setToggle] = useState(1);
@@ -150,7 +147,7 @@ const EditMedallon = () => {
                 {/* Comment Content */}
                 <div className="grid grid-cols-1 md:grid-cols-1 gap-8 pr-12 text-left pl-12">
                   {/* Comment Cards */}
-                  <CommentCardSection />
+                  <CommentCard showButtons={true} />
                 </div>
               </div>
             )}
@@ -182,25 +179,5 @@ const EditMedallon = () => {
   );
 };
 
-const CommentCardSection = () => {
-  return (
-    <div className="col-span-1 relative">
-      <div className="absolute md:top-0 md:left-32 w-full flex justify-center space-x-3.5 mt-4 z-10 ">
-        <button className="bg-green-500 hover:bg-green-600 text-white font-bold py-1 px-3 md:py-2 md:px-4 rounded mx-1 md:mx-0">
-          Aprovar
-        </button>
-        <button className="bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-3 md:py-2 md:px-4 rounded mx-1 md:mx-0 ">
-          Anular
-        </button>
-      </div>
-      <CommentCard
-        author="Author Name"
-        text="Comment Text"
-        timestamp="Timestamp"
-      />
-
-    </div>
-  );
-};
 
 export default EditMedallon;

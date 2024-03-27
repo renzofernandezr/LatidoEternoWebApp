@@ -1,9 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDropzone } from "react-dropzone";
 
 const EscribirComentario = ({ onClose, onUpload }) => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [description, setDescription] = useState("");
+
+  useEffect(() => {
+    // Disable scrolling on the body when the popup is open
+    document.body.style.overflow = "hidden";
+
+    // Re-enable scrolling on the body when the popup is closed
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, []);
 
   const handleSubirClick = () => {
     // Call the onUpload function with selected file
@@ -30,52 +40,60 @@ const EscribirComentario = ({ onClose, onUpload }) => {
   });
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-500 bg-opacity-50">
-      <div className="bg-white p-6 rounded-lg max-w-md">
-      <div className="text-center mb-4">
-  <img  src='https://lh3.googleusercontent.com/a/ACg8ocJIeFrk9J4aTwaIluwcyeaJXB8LoDEUPJCuxexbPynv946X=s96-c' alt="" className="mx-auto mb-2 w-24 h-24 rounded-full" />
-  <p className="text-lg font-semibold text-rojo">Renzo Fernandez</p>
-  <hr className="my-4 border-gray-300" />
-</div>
-
-        <p className="mb-2 text-center ">
-          Cada comentario debera ser aprobado por el propietario del perfil
-        </p>
-        <div className="mb-4 mt-3 md:col-span-2">
-          <label htmlFor="phrase" className="font-semibold">
-            Titulo:
-          </label>
-          <input
-            type="text"
-            id="phrase"
-            className="mt-1 p-2 w-full border rounded"
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-500 bg-opacity-50 pl-6 pr-6">
+      <div className="bg-white p-6 rounded-lg max-w-md overflow-hidden">
+        <div className="flex items-center justify-center mb-4">
+          <img
+            src='https://lh3.googleusercontent.com/a/ACg8ocJIeFrk9J4aTwaIluwcyeaJXB8LoDEUPJCuxexbPynv946X=s96-c'
+            alt=""
+            className="mr-3 w-10 h-10 rounded-full"
           />
-        </div>
-        <div className="mb-4">
-          <h3 className="font-semibold">Comentario:</h3>
-          <textarea
-            rows="3"
-            placeholder="Escribe alguna memoria que te gustaria compartir."
-            value={description}
-            onChange={handleDescriptionChange}
-            className="mt-1 p-2 w-full border rounded"
-          ></textarea>
-        </div>
-        <h3 className="mb-4 font-semibold">Imágenes:</h3>
-        <div className="mb-4 border-dashed border-2 border-gray-400 rounded-md p-4">
-          <div {...getRootProps({ className: "dropzone" })}>
-            <input {...getInputProps()} />
-            <p>Arrastra una imagen aquí o haz clic para seleccionar</p>
-          </div>
           <div>
-            {selectedFile && (
-              <img
-                src={URL.createObjectURL(selectedFile)}
-                alt={`uploaded`}
-                className="mt-2 rounded"
-                style={{ maxWidth: "100px", maxHeight: "100px" }}
-              />
-            )}
+            <p className="text-lg font-semibold text-black">Renzo Fernandez</p>
+          </div>
+        </div>
+
+        <div className="h-64 overflow-y-auto">
+          <p className="mb-2 text-center text-sm">
+            <hr className="my-1 border-gray-300 mb-3" />
+            Cada comentario e imagen deberá ser aprobado por el propietario del perfil
+          </p>
+          <div className="mb-4 mt-3 md:col-span-2">
+            <label htmlFor="phrase" className="font-semibold">
+              Titulo:
+            </label>
+            <input
+              type="text"
+              id="phrase"
+              className="mt-1 p-2 w-full border rounded"
+            />
+          </div>
+          <div className="mb-4">
+            <h3 className="font-semibold">Comentario:</h3>
+            <textarea
+              rows="3"
+              placeholder="Escribe alguna memoria que te gustaria compartir."
+              value={description}
+              onChange={handleDescriptionChange}
+              className="mt-1 p-2 w-full border rounded"
+            ></textarea>
+          </div>
+          <h3 className="mb-4 font-semibold">Imágenes:</h3>
+          <div className="mb-4 border-dashed border-2 border-gray-400 rounded-md p-4">
+            <div {...getRootProps({ className: "dropzone" })}>
+              <input {...getInputProps()} />
+              <p>Arrastra una imagen aquí o haz clic para seleccionar</p>
+            </div>
+            <div>
+              {selectedFile && (
+                <img
+                  src={URL.createObjectURL(selectedFile)}
+                  alt={`uploaded`}
+                  className="mt-2 rounded"
+                  style={{ maxWidth: "100px", maxHeight: "100px" }}
+                />
+              )}
+            </div>
           </div>
         </div>
         <div className="flex justify-between">

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDropzone } from "react-dropzone";
 
 const UploadModal = ({ onClose, onUpload }) => {
@@ -35,8 +35,17 @@ const UploadModal = ({ onClose, onUpload }) => {
     multiple: mediaType === "photos",
   });
 
+  useEffect(() => {
+    // Disable scrolling on the body when the pop-up is open
+    document.body.style.overflow = 'hidden';
+    // Re-enable scrolling on the body when the pop-up is closed
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, []);
+
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-500 bg-opacity-50">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-500 bg-opacity-50 pl-6 pr-6 overflow-y-auto">
       <div className="bg-white p-6 rounded-lg max-w-md">
         <h2 className="text-xl font-semibold mb-4 text-center">Subir Contenido</h2>
         <div className="mb-4">

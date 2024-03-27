@@ -161,7 +161,8 @@ const ProfilePageV2 = () => {
           </button>
           </div>
           <div className="pb-10 pr-10 pl-10 text-left ">
-  <CommentCard></CommentCard>
+          <CommentCard showButtons={false} />
+
 </div>
       </div>
     </div>
