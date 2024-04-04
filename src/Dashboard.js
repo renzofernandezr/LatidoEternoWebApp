@@ -2,6 +2,7 @@ import HeaderComp from './Componentes/header_comp';
 import EditProfileComp from './Componentes/editarperfil_com';
 import MembersList from './Componentes/memberview';
 import CrearPerfilComp from './Componentes/crearmedallon_com'; // Step 1: Import the CrearPerfilComp component
+import FavoritosComp from './Componentes/favoritos';
 import React, { useState } from 'react';
 import './Css/Dashboard.css';
 
@@ -38,8 +39,8 @@ const DashBoard = () => {
                     <div className="my-5">
                         <ul className="flex flex-wrap items-center justify-center text-black space-x-10">
                             <li className={toggle === 1 ? 'selected' : ''} onClick={() => updateToggle(1)}>Medallones</li>
-                            <li className={toggle === 3 ? 'selected' : ''} onClick={() => updateToggle(2)}>Mi Cuenta</li>
-
+                            <li className={toggle === 2 ? 'selected' : ''} onClick={() => updateToggle(2)}>Mi Cuenta</li>
+                            <li className={toggle === 3 ? 'selected' : ''} onClick={() => updateToggle(3)}>Favoritos</li>
                         </ul>
                         <div className="slate-line"></div>
 
@@ -69,6 +70,10 @@ const DashBoard = () => {
                        
                         <div className={toggle === 2 ? "show-content1" : "content1"}>
                             <EditProfileComp></EditProfileComp>
+                        </div>
+
+                        <div className={toggle === 3 ? "show-content1" : "content1"}>
+                            <FavoritosComp></FavoritosComp>
                         </div>
 
                     </div>
