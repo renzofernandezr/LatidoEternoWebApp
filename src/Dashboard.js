@@ -121,10 +121,10 @@ const DashBoard = () => {
                     <i className="far fa-home text-xl"></i>
                         <span className="block text-xs">Tienda</span>
                     </p>
-                    <a className='block text-center text-black py-2' >
+                    <p className='block text-center text-black py-2' >
                     <i className="far fa-user text-xl"></i>
                         <span className="block text-xs" >Mi Cuenta</span>
-                    </a>
+                    </p>
                     <p className="block text-center text-black py-2">
                     <i className="far fa-sign-out-alt text-xl"></i>
                         <span className="block text-xs">Salir</span>
