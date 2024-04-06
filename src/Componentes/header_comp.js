@@ -1,28 +1,29 @@
 import React from 'react'; // Import React
 
-const HeaderComp = ({ onMiCuentaClick, onLogoutClick }) => {    
+const HeaderComp = ({ onMiCuentaClick, onLogoutClick }) => {
   const logoSrc = `${process.env.PUBLIC_URL}/logoh.png`;
 
   return (
-    <header className="w-full h-14 md:h-20 flex justify-between items-center bg-white fixed top-0 z-50 shadow-md px-4 md:px-20">
-      <div className="flex items-center justify-center"> {/* Center the logo */}
-        <img src={logoSrc} alt="Logo" className="h-11 md:h-16" />
+    <header className="w-full h-20 flex items-center bg-white fixed top-0 z-50 shadow-md px-4 md:px-20">
+      {/* Center the logo for mobile */}
+      <div className="flex items-center justify-center md:justify-start w-full md:w-auto"> 
+        <img src={logoSrc} alt="Logo" className="h-14" />
       </div>
-      <div className="hidden md:flex items-center space-x-10">
+      <div className="hidden md:flex items-center ml-auto space-x-6">
         <a href="https://www.latidoeterno.com/">
-          <p className="block text-center text-white py-2 hover:cursor-pointer rounded-full bg-black p-3">
+          <button className="bg-transparent hover:bg-black text-black font-semibold hover:text-white py-2 px-4 border border-black hover:border-transparent rounded">
             <i className="far fa-home text-xl"></i>
             <span className="ml-2">Tienda</span>
-          </p>
+          </button>
         </a>
-        <p className="block text-center text-white py-2 hover:cursor-pointer rounded-full bg-black p-3" onClick={onMiCuentaClick}>
+        <button className="bg-transparent hover:bg-black text-black font-semibold hover:text-white py-2 px-4 border border-black hover:border-transparent rounded">
             <i className="far fa-user text-xl"></i>
             <span className="ml-2">Mi Cuenta</span>
-          </p>
-        <p className="block text-center text-white py-2 hover:cursor-pointer rounded-full bg-black p-3" onClick={onLogoutClick}>
+        </button>
+        <button className="bg-transparent hover:bg-black text-black font-semibold hover:text-white py-2 px-4 border border-black hover:border-transparent rounded">
             <i className="far fa-sign-out-alt text-xl"></i>
             <span className="ml-2">Finalizar Sesion</span>
-          </p>
+        </button>
       </div>
     </header>
   );
