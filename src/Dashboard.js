@@ -35,7 +35,7 @@ const DashBoard = () => {
     
       
     return (
-        <div className="min-h-screen flex flex-col sm:bg-white md:bg-gray-100">
+        <div className="min-h-screen flex flex-col bg-white md:bg-gray-100">
             <HeaderComp  onLogoutClick={handleLogoutClick} />
             <div className="w-full flex flex-col items-center px-0 mt-14 md:mt-28 mb-20">
                 <div className="w-full max-w-5xl bg-white md:shadow-lg relative  text-center md:text-left md:rounded-lg px-10">
@@ -99,15 +99,15 @@ const DashBoard = () => {
             <div className="md:hidden fixed inset-x-0 bottom-0 bg-white" style={{ boxShadow: '1px -1px 4px 0px rgba(88,88,88,0.19)' }}>
                 <div className="flex justify-around">
                     <p className="block text-center text-black py-2">
-                    <i className="far fa-home text-xl"></i>
+                    <i className="fas fa-home text-xl"></i>
                         <span className="block text-xs">Tienda</span>
                     </p>
-                    <p className="block text-center text-black py-2">
-                    <i className="far fa-user text-xl"></i>
+                    <p className="block text-center text-black py-2 ">
+                    <i className="fas fa-user text-xl"></i>
                         <button className="block text-xs" onClick={() => setEditCuenta(true)} >Mi Cuenta</button>
                         </p>
                     <p className="block text-center text-black py-2">
-                    <i className="far fa-sign-out-alt text-xl"></i>
+                    <i className="fas fa-sign-out-alt text-xl"></i>
                         <span className="block text-xs">Salir</span>
                     </p>
                 </div>

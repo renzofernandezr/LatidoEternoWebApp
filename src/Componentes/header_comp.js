@@ -12,16 +12,16 @@ const HeaderComp = ({ onMiCuentaClick, onLogoutClick }) => {
       <div className="hidden md:flex items-center ml-auto space-x-6">
         <a href="https://www.latidoeterno.com/">
           <button className="bg-transparent hover:bg-black text-black font-semibold hover:text-white py-2 px-4 border border-black hover:border-transparent rounded">
-            <i className="far fa-home text-xl"></i>
+            <i className="fas fa-home text-xl"></i>
             <span className="ml-2">Tienda</span>
           </button>
         </a>
         <button className="bg-transparent hover:bg-black text-black font-semibold hover:text-white py-2 px-4 border border-black hover:border-transparent rounded">
-            <i className="far fa-user text-xl"></i>
+            <i className="fas fa-user text-xl"></i>
             <span className="ml-2">Mi Cuenta</span>
         </button>
         <button className="bg-transparent hover:bg-black text-black font-semibold hover:text-white py-2 px-4 border border-black hover:border-transparent rounded">
-            <i className="far fa-sign-out-alt text-xl"></i>
+            <i className="fas fa-sign-out-alt text-xl"></i>
             <span className="ml-2">Finalizar Sesion</span>
         </button>
       </div>
